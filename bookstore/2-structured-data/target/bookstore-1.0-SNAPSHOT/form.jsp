@@ -23,6 +23,9 @@ Copyright 2016 Google Inc.
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
 
+    <!--ceci est super important. -->
+    <input type="hidden" name="id" value="${book.id}" />
+
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" name="title" id="title" value="${fn:escapeXml(book.title)}" class="form-control" />

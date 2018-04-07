@@ -31,7 +31,7 @@ Copyright 2016 Google Inc.
 
   <div class="media">
     <div class="media-left">
-      <img class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}">
+      <img class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/256/192')}">
     </div>
     <div class="media-body">
       <h4 class="book-title">
