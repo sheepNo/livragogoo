@@ -43,11 +43,6 @@ Copyright 2016 Google Inc.
       <textarea name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
     </div>
 
-    <div class="form-group">
-      <label for="imageUrl">Cover Image URL</label>
-      <input type="text" name="imageUrl" id="imageUrl" value="${fn:escapeXml(book.imageUrl)}" class="form-control" />
-    </div>
-
     <button type="submit" class="btn btn-success">Save</button>
   </form>
 </div>

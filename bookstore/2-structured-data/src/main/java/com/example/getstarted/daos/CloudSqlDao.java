@@ -42,7 +42,7 @@ public class CloudSqlDao implements BookDao {
     final String createTableSql = "CREATE TABLE IF NOT EXISTS books2 ( id INT NOT NULL "
         + "AUTO_INCREMENT, author VARCHAR(255), createdBy VARCHAR(255), createdById VARCHAR(255), "
         + "description VARCHAR(255), publishedDate VARCHAR(255), title VARCHAR(255), imageUrl "
-        + "VARCHAR(255), PRIMARY KEY (id))";
+        + "VARCHAR(255), rating FLOAT, numberVotes INT, PRIMARY KEY (id))";
     try (Connection conn = dataSource.getConnection()) {
       conn.createStatement().executeUpdate(createTableSql);
     }
@@ -52,8 +52,8 @@ public class CloudSqlDao implements BookDao {
   @Override
   public Long createBook(Book book) throws SQLException {
     final String createBookString = "INSERT INTO books2 "
-        + "(author, createdBy, createdById, description, publishedDate, title, imageUrl) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        + "(author, createdBy, createdById, description, publishedDate, title, imageUrl, rating, numberVotes) "
+        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     try (Connection conn = dataSource.getConnection();
         final PreparedStatement createBookStmt = conn.prepareStatement(createBookString,
             Statement.RETURN_GENERATED_KEYS)) {
@@ -64,6 +64,8 @@ public class CloudSqlDao implements BookDao {
       createBookStmt.setString(5, book.getPublishedDate());
       createBookStmt.setString(6, book.getTitle());
       createBookStmt.setString(7, book.getImageUrl());
+      createBookStmt.setFloat(8, 0);
+      createBookStmt.setInt(9, 0);
       createBookStmt.executeUpdate();
       try (ResultSet keys = createBookStmt.getGeneratedKeys()) {
         keys.next();
@@ -114,6 +116,18 @@ public class CloudSqlDao implements BookDao {
     }
   }
   // [END update]
+  // [START rate]
+  @Override
+  public void rateBook(Book book) throws SQLException {
+    final String rateBookString = "UPDATE books2 SET rating = (? + rating * numberVotes) / (numberVotes + 1), numberVotes = numberVotes + 1 WHERE id = ?";
+    try (Connection conn = dataSource.getConnection();
+        PreparedStatement rateBookStmt = conn.prepareStatement(rateBookString)) {
+      rateBookStmt.setFloat(1, book.getRating());
+      rateBookStmt.setLong(2, book.getId());
+      rateBookStmt.executeUpdate();
+    }
+  }
+  // [END rate]
   // [START delete]
   @Override
   public void deleteBook(Long bookId) throws SQLException {

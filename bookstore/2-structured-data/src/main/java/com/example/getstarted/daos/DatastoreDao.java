@@ -90,6 +90,16 @@ public class DatastoreDao implements BookDao {
     datastore.update(entity);                   // Update the Entity
   }
   // [END update]
+  // [START rate]
+  @Override
+  public void rateBook(Book book) {
+    Key key = keyFactory.newKey(book.getId());  // From a book, create a Key
+    Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
+        .set(Book.RATING, book.getRating())
+        .build();
+    datastore.update(entity);                   // Update the Entity
+  }
+  // [END rate]
   // [START delete]
   @Override
   public void deleteBook(Long bookId) {

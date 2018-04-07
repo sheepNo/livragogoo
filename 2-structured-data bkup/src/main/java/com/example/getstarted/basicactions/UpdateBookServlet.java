@@ -48,7 +48,7 @@ public class UpdateBookServlet extends HttpServlet {
             throw new ServletException("Error loading book for editing", e);
         }
     }
-
+    
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
