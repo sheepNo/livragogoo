@@ -114,6 +114,25 @@ public class CloudSqlDao implements BookDao {
     }
   }
   // [END update]
+  // [START rate]
+  @Override
+  public void rateBook(Book book) throws SQLException {
+    final String updateBookString = "UPDATE books2 SET author = ?, createdBy = ?, createdById = ?, "
+        + "description = ?, publishedDate = ?, title = ?, imageUrl = ? WHERE id = ?";
+    try (Connection conn = dataSource.getConnection();
+        PreparedStatement updateBookStmt = conn.prepareStatement(updateBookString)) {
+      updateBookStmt.setString(1, book.getAuthor());
+      updateBookStmt.setString(2, book.getCreatedBy());
+      updateBookStmt.setString(3, book.getCreatedById());
+      updateBookStmt.setString(4, book.getDescription());
+      updateBookStmt.setString(5, book.getPublishedDate());
+      updateBookStmt.setString(6, book.getTitle());
+      updateBookStmt.setString(7, book.getImageUrl());
+      updateBookStmt.setLong(8, book.getId());
+      updateBookStmt.executeUpdate();
+    }
+  }
+  // [END rate]
   // [START delete]
   @Override
   public void deleteBook(Long bookId) throws SQLException {
