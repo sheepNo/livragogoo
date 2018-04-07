@@ -38,33 +38,16 @@ public class RateBookServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
-        // Long id = Long.decode(req.getParameter("id"));
         BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
         try {
-            dao.rateBook(id);
+            Book book = new Book.Builder()
+            .id(Long.decode(req.getParameter("id")))
+            .rating(req.getParameter("rating"))
+            .build();
+            dao.rateBook(book);
             resp.sendRedirect("/books");
         } catch (Exception e) {
             throw new ServletException("Error deleting book", e);
-        }
-
-        try {
-            // [START bookBuilder]
-            Book book = new Book.Builder()
-            // .author(book.getAuthor())
-            // .description(book.getDescription())
-            // .author(req.getParameter("author"))
-            // .description(req.getParameter("description"))
-            rate = (Long.decode(req.getParameter("rating")))
-            // .publishedDate(req.getParameter("publishedDate"))
-            // .title(req.getParameter("title"))
-            .rating(req.getParameter("rating"))
-            .numberOfVotes()
-            .build();
-            // [END bookBuilder]
-            dao.rateBook(book);
-            resp.sendRedirect("/read?id=" + req.getParameter("id"));
-        } catch (Exception e) {
-            throw new ServletException("Error rating book", e);
         }
     }
 }

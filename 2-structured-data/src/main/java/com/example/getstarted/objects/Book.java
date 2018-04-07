@@ -26,7 +26,6 @@ public class Book {
     private String description;
     private Long id;
     private String imageUrl;
-    private Long numberOfVotes;
     private Long rating;
     // [END book]
     // [START keys]
@@ -39,7 +38,6 @@ public class Book {
     public static final String TITLE = "title";
     public static final String IMAGE_URL = "imageUrl";
     public static final String RATING = "rating";
-    public static final String NUMBER_OF_VOTES = "numberOfVotes";
 
     // [END keys]
     // [START constructor]
@@ -53,7 +51,6 @@ public class Book {
         this.description = builder.description;
         this.id = builder.id;
         this.imageUrl = builder.imageUrl;
-        this.numberOfVotes = 1;
         this.rating = builder.rating;
     }
     // [END constructor]

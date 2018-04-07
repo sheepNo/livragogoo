@@ -28,7 +28,7 @@ public interface BookDao {
 
     void updateBook(Book book) throws SQLException;
 
-    void rateBook(Long bookId) throws SQLException;
+    void rateBook(Book book) throws SQLException;
 
     void deleteBook(Long bookId) throws SQLException;
 

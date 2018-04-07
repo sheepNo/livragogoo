@@ -24,28 +24,8 @@ Copyright 2016 Google Inc.
   <form method="POST" action="${destination}" enctype="multipart/form-data">
 
     <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" value="${fn:escapeXml(book.title)}" class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="author">Author</label>
-      <input type="text" name="author" id="author" value="${fn:escapeXml(book.author)}" class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="publishedDate">Date Published</label>
-      <input type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" class="form-control" />
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="imageUrl">Cover Image URL</label>
-      <input type="text" name="imageUrl" id="imageUrl" value="${fn:escapeXml(book.imageUrl)}" class="form-control" />
+      <label for="rating">Rating</label>
+      <input type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
     </div>
 
     <button type="submit" class="btn btn-success">Save</button>

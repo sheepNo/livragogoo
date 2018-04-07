@@ -42,7 +42,7 @@ public class CloudSqlDao implements BookDao {
     final String createTableSql = "CREATE TABLE IF NOT EXISTS books2 ( id INT NOT NULL "
         + "AUTO_INCREMENT, author VARCHAR(255), createdBy VARCHAR(255), createdById VARCHAR(255), "
         + "description VARCHAR(255), publishedDate VARCHAR(255), title VARCHAR(255), imageUrl "
-        + "VARCHAR(255), PRIMARY KEY (id))";
+        + "VARCHAR(255), rating REAL, numberVotes INTEGER, PRIMARY KEY (id))";
     try (Connection conn = dataSource.getConnection()) {
       conn.createStatement().executeUpdate(createTableSql);
     }
@@ -52,8 +52,8 @@ public class CloudSqlDao implements BookDao {
   @Override
   public Long createBook(Book book) throws SQLException {
     final String createBookString = "INSERT INTO books2 "
-        + "(author, createdBy, createdById, description, publishedDate, title, imageUrl) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        + "(author, createdBy, createdById, description, publishedDate, title, imageUrl, rating, numberVotes) "
+        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     try (Connection conn = dataSource.getConnection();
         final PreparedStatement createBookStmt = conn.prepareStatement(createBookString,
             Statement.RETURN_GENERATED_KEYS)) {
@@ -64,6 +64,8 @@ public class CloudSqlDao implements BookDao {
       createBookStmt.setString(5, book.getPublishedDate());
       createBookStmt.setString(6, book.getTitle());
       createBookStmt.setString(7, book.getImageUrl());
+      createBookStmt.setInteger(8, 0);
+      createBookStmt.setInteger(9, 0);
       createBookStmt.executeUpdate();
       try (ResultSet keys = createBookStmt.getGeneratedKeys()) {
         keys.next();
@@ -117,19 +119,12 @@ public class CloudSqlDao implements BookDao {
   // [START rate]
   @Override
   public void rateBook(Book book) throws SQLException {
-    final String updateBookString = "UPDATE books2 SET author = ?, createdBy = ?, createdById = ?, "
-        + "description = ?, publishedDate = ?, title = ?, imageUrl = ? WHERE id = ?";
+    final string rateBookString = "UPDATE books2 SET rating = (? + rating * numberVotes) / (numberVotes + 1), numberVotes = numberVotes + 1 WHERE id = ?";
     try (Connection conn = dataSource.getConnection();
-        PreparedStatement updateBookStmt = conn.prepareStatement(updateBookString)) {
-      updateBookStmt.setString(1, book.getAuthor());
-      updateBookStmt.setString(2, book.getCreatedBy());
-      updateBookStmt.setString(3, book.getCreatedById());
-      updateBookStmt.setString(4, book.getDescription());
-      updateBookStmt.setString(5, book.getPublishedDate());
-      updateBookStmt.setString(6, book.getTitle());
-      updateBookStmt.setString(7, book.getImageUrl());
-      updateBookStmt.setLong(8, book.getId());
-      updateBookStmt.executeUpdate();
+        PreparedStatement rateBookStmt = conn.prepareStatement(rateBookString)) {
+      rateBookStmt.setLong(1, book.getRating());
+      rateBookStmt.setLong(2, book.getId());
+      rateBookStmt.executeUpdate();
     }
   }
   // [END rate]
