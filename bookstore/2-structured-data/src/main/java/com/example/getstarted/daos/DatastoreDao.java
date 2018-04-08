@@ -98,11 +98,11 @@ public class DatastoreDao implements BookDao {
   public void rateBook(Book book) {
     Key key = keyFactory.newKey(book.getId());  // From a book, create a Key
     Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
-        .set(Book.RATING, book.getRating())
         .set(Book.AUTHOR, book.getAuthor())
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
+        .set(Book.RATING, book.getRating())
         .build();
     datastore.update(entity);                   // Update the Entity
   }

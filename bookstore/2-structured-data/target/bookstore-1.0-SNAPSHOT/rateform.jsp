@@ -25,32 +25,22 @@ Copyright 2016 Google Inc.
 
     <!--ceci est super important. -->
     <input type="hidden" name="id" value="${book.id}" />
-
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" value="${fn:escapeXml(book.title)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="author">Author</label>
-      <input type="text" name="author" id="author" value="${fn:escapeXml(book.author)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="publishedDate">Date Published</label>
-      <input type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description bonjour</label>
-      <textarea name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
-    </div>
-
+    <input type="hidden" type="text" name="title" id="title" value="${fn:escapeXml(book.title)}" class="form-control" />
+    <input type="hidden"  type="text" name="author" id="author" value="${fn:escapeXml(book.author)}" class="form-control" />
+    <input type="hidden"  type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" class="form-control" />
+    <textarea style="display:none;" name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
 
     <div class="form-group">
       <label for="rating">Rating</label>
       <input type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
     </div>
+
+    <%-- <select id="rating" name="${book.rating}" class="custom-select">
+      <option selected>Open this select menu</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select> --%>
+
 
     <button type="submit" class="btn btn-success">Save</button>
   </form>

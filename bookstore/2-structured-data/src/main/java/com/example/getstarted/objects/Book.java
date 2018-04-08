@@ -27,6 +27,8 @@ public class Book {
     private Long id;
     private String imageUrl;
     private double rating;
+    private double numberVotes;
+
     // [END book]
     // [START keys]
     public static final String AUTHOR = "author";
@@ -38,6 +40,8 @@ public class Book {
     public static final String TITLE = "title";
     public static final String IMAGE_URL = "imageUrl";
     public static final String RATING = "rating";
+    public static final String NBVOTES = "rating";
+
 
     // [END keys]
     // [START constructor]
@@ -52,6 +56,7 @@ public class Book {
         this.id = builder.id;
         this.imageUrl = builder.imageUrl;
         this.rating = builder.rating;
+        this.numberVotes = builder.numberVotes;
     }
     // [END constructor]
     // [START builder]
@@ -65,6 +70,7 @@ public class Book {
         private Long id;
         private String imageUrl;
         private double rating;
+        private double numberVotes;
 
         public Builder title(String title) {
             this.title = title;
@@ -108,6 +114,11 @@ public class Book {
 
         public Builder rating(double rating) {
             this.rating = rating;
+            return this;
+        }
+
+        public Builder numberVotes(double numberVotes) {
+            this.numberVotes = numberVotes;
             return this;
         }
 
@@ -170,6 +181,14 @@ public class Book {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public double getNumberVotes() {
+        return numberVotes;
+    }
+
+    public void setNumberVotes(double numberVotes) {
+        this.numberVotes = numberVotes;
     }
 
     public Long getId() {
