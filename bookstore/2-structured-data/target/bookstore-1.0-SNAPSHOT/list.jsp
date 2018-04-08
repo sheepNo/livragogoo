@@ -36,6 +36,7 @@ Copyright 2016 Google Inc.
       <div class="media-body">
         <h4>${fn:escapeXml(book.title)}</h4>
         <p>${fn:escapeXml(book.author)}</p>
+        <p>${fn:escapeXml(book.rating)}</p>
       </div>
     </a>
   </div>

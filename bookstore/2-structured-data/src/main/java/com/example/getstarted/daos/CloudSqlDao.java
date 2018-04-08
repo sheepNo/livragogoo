@@ -64,7 +64,7 @@ public class CloudSqlDao implements BookDao {
       createBookStmt.setString(5, book.getPublishedDate());
       createBookStmt.setString(6, book.getTitle());
       createBookStmt.setString(7, book.getImageUrl());
-      createBookStmt.setFloat(8, 0);
+      createBookStmt.setFloat(8, 5);
       createBookStmt.setInt(9, 0);
       createBookStmt.executeUpdate();
       try (ResultSet keys = createBookStmt.getGeneratedKeys()) {
@@ -91,6 +91,7 @@ public class CloudSqlDao implements BookDao {
             .id(keys.getLong(Book.ID))
             .publishedDate(keys.getString(Book.PUBLISHED_DATE))
             .title(keys.getString(Book.TITLE))
+            .rating(5)
             .imageUrl(keys.getString(Book.IMAGE_URL))
             .build();
       }
@@ -101,7 +102,7 @@ public class CloudSqlDao implements BookDao {
   @Override
   public void updateBook(Book book) throws SQLException {
     final String updateBookString = "UPDATE books2 SET author = ?, createdBy = ?, createdById = ?, "
-        + "description = ?, publishedDate = ?, title = ?, imageUrl = ? WHERE id = ?";
+        + "description = ?, rating = 2, publishedDate = ?, title = ?, imageUrl = ? WHERE id = ?";
     try (Connection conn = dataSource.getConnection();
         PreparedStatement updateBookStmt = conn.prepareStatement(updateBookString)) {
       updateBookStmt.setString(1, book.getAuthor());
@@ -163,6 +164,7 @@ public class CloudSqlDao implements BookDao {
               .id(rs.getLong(Book.ID))
               .publishedDate(rs.getString(Book.PUBLISHED_DATE))
               .title(rs.getString(Book.TITLE))
+              .rating(5)
               .imageUrl(rs.getString(Book.IMAGE_URL))
               .build();
           resultBooks.add(book);

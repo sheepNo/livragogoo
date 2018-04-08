@@ -26,7 +26,6 @@ Copyright 2016 Google Inc.
       <!--ceci est super important. -->
       <input type="hidden" name="id" value="${book.id}" />
 
-
     <div class="form-group">
       <label for="rating">Rating</label>
       <input type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />

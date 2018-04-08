@@ -26,7 +26,7 @@ public class Book {
     private String description;
     private Long id;
     private String imageUrl;
-    private Float rating;
+    private float rating;
     // [END book]
     // [START keys]
     public static final String AUTHOR = "author";
@@ -64,7 +64,7 @@ public class Book {
         private String description;
         private Long id;
         private String imageUrl;
-        private Float rating;
+        private float rating;
 
         public Builder title(String title) {
             this.title = title;
@@ -106,7 +106,7 @@ public class Book {
             return this;
         }
 
-        public Builder rating(Float rating) {
+        public Builder rating(float rating) {
             this.rating = rating;
             return this;
         }
@@ -164,11 +164,11 @@ public class Book {
         this.description = description;
     }
 
-    public Float getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(Float rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
