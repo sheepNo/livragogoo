@@ -42,9 +42,10 @@ Copyright 2016 Google Inc.
     </div>
 
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="description">Description bonjour</label>
       <textarea name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
     </div>
+
 
     <button type="submit" class="btn btn-success">Save</button>
   </form>

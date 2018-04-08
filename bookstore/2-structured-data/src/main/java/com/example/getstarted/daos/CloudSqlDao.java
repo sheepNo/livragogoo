@@ -42,7 +42,7 @@ public class CloudSqlDao implements BookDao {
     final String createTableSql = "CREATE TABLE IF NOT EXISTS books2 ( id INT NOT NULL "
         + "AUTO_INCREMENT, author VARCHAR(255), createdBy VARCHAR(255), createdById VARCHAR(255), "
         + "description VARCHAR(255), publishedDate VARCHAR(255), title VARCHAR(255), imageUrl "
-        + "VARCHAR(255), rating FLOAT, numberVotes INT, PRIMARY KEY (id))";
+        + "VARCHAR(255), rating DOUBLE, numberVotes INT, PRIMARY KEY (id))";
     try (Connection conn = dataSource.getConnection()) {
       conn.createStatement().executeUpdate(createTableSql);
     }
@@ -64,7 +64,7 @@ public class CloudSqlDao implements BookDao {
       createBookStmt.setString(5, book.getPublishedDate());
       createBookStmt.setString(6, book.getTitle());
       createBookStmt.setString(7, book.getImageUrl());
-      createBookStmt.setFloat(8, 5);
+      createBookStmt.setDouble(8, 5);
       createBookStmt.setInt(9, 0);
       createBookStmt.executeUpdate();
       try (ResultSet keys = createBookStmt.getGeneratedKeys()) {
@@ -123,7 +123,7 @@ public class CloudSqlDao implements BookDao {
     final String rateBookString = "UPDATE books2 SET rating = (? + rating * numberVotes) / (numberVotes + 1), numberVotes = numberVotes + 1 WHERE id = ?";
     try (Connection conn = dataSource.getConnection();
         PreparedStatement rateBookStmt = conn.prepareStatement(rateBookString)) {
-      rateBookStmt.setFloat(1, book.getRating());
+      rateBookStmt.setDouble(1, book.getRating());
       rateBookStmt.setLong(2, book.getId());
       rateBookStmt.executeUpdate();
     }

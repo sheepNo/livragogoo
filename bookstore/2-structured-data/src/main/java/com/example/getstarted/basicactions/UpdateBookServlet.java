@@ -48,7 +48,7 @@ public class UpdateBookServlet extends HttpServlet {
             throw new ServletException("Error loading book for editing", e);
         }
     }
-    
+
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
@@ -61,6 +61,7 @@ public class UpdateBookServlet extends HttpServlet {
             .id(Long.decode(req.getParameter("id")))
             .publishedDate(req.getParameter("publishedDate"))
             .title(req.getParameter("title"))
+            // .rating(Double.parseDouble(req.getParameter("rating")))
             .build();
             // [END bookBuilder]
             dao.updateBook(book);

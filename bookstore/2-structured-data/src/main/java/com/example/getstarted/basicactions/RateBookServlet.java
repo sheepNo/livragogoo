@@ -42,7 +42,7 @@ public class RateBookServlet extends HttpServlet {
         try {
             Book book = new Book.Builder()
             .id(Long.decode(req.getParameter("id")))
-            .rating(Long.decode(req.getParameter("rating")).floatValue())
+            .rating(Double.parseDouble(req.getParameter("rating")))
             .build();
             dao.rateBook(book);
             resp.sendRedirect("/books");

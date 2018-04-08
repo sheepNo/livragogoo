@@ -18,7 +18,12 @@ Copyright 2016 Google Inc.
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="container">
   <h3>Book</h3>
+
   <div class="btn-group">
+      <a href="/rate?id=${book.id}" class="btn btn-warning btn-sm">
+        <i class="glyphicon glyphicon-star"></i>
+          Rate
+      </a>
     <a href="/update?id=${book.id}" class="btn btn-primary btn-sm">
       <i class="glyphicon glyphicon-edit"></i>
       Edit
@@ -26,10 +31,6 @@ Copyright 2016 Google Inc.
     <a href="/delete?id=${book.id}" class="btn btn-danger btn-sm">
       <i class="glyphicon glyphicon-trash"></i>
       Delete
-    </a>
-    <a href="/rate?id=${book.id}" class="btn btn-primarysecondary btn-sm">
-      <i class="glyphicon glyphicon-edit"></i>
-        Rate this book
     </a>
   </div>
 
@@ -43,32 +44,24 @@ Copyright 2016 Google Inc.
         <small>${fn:escapeXml(book.publishedDate)}</small>
       </h4>
       <h5 class="book-author">By ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</h5>
-      <p>rating: ${fn:escapeXml(book.rating)}</p>
+      <p>rating: ${fn:escapeXml(book.rating)} (${fn:escapeXml(0)} votes)</p>
       <p class="book-description">${fn:escapeXml(book.description)}</p>
       <small class="book-added-by">Added by
         ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')}</small>
     </div>
+
   </div>
 
+
   <%-- <c:choose>
-  <c:when test="${empty comments}">
+  <c:when test="${empty comments}"> --%>
   <p>No comments found</p>
-  </c:when>
+  <%-- </c:when>
   <c:otherwise>
   <c:forEach items="${comments}" var="comment">
-  <div class="media">
-    <a href="/read?id=${book.id}">
-      <div class="media-left">
-        <img alt="ahhh" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}">
-      </div>
-      <div class="media-body">
-        <h4>${fn:escapeXml(book.title)}</h4>
-        <p>${fn:escapeXml(book.author)}</p>
-        <p>${fn:escapeXml(book.rating)}</p>
-      </div>
-    </a>
-  </div>
-  </c:forEach>   --%>
+  <p>${fn:escapeXml(comment.message)}</p>
+  <p>${fn:escapeXml(comment.rating)}</p>
+  </c:forEach> --%>
 
 </div>
 <!-- [END view] -->
