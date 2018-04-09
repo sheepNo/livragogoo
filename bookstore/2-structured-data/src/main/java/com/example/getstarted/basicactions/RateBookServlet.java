@@ -21,7 +21,6 @@ public class RateBookServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
-        // Long id = Long.decode(req.getParameter("id"));
         BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
         try {
             Book book = dao.readBook(Long.decode(req.getParameter("id")));
@@ -41,11 +40,15 @@ public class RateBookServlet extends HttpServlet {
         BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
         try {
             Book book = new Book.Builder()
+            .author(req.getParameter("author"))
+            .description(req.getParameter("description"))
+            .publishedDate(req.getParameter("publishedDate"))
+            .title(req.getParameter("title"))
             .id(Long.decode(req.getParameter("id")))
             .rating(Double.parseDouble(req.getParameter("rating")))
             .build();
             dao.rateBook(book);
-            resp.sendRedirect("/books");
+            resp.sendRedirect("/read?id=" + req.getParameter("id"));
         } catch (Exception e) {
             throw new ServletException("Error rating book", e);
         }

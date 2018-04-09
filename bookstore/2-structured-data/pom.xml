@@ -34,7 +34,7 @@ Copyright 2016 Google Inc.
     <!-- [START config] -->
     <projectID>myProjectID</projectID> <!-- set w/ -DprojectID=myProjectID on command line -->
 
-    <bookshelf.storageType>datastore</bookshelf.storageType>   <!-- datastore or cloudsql -->
+    <bookshelf.storageType>datastore</bookshelf.storageType>   <!-- datastore  -->
 
     <sql.dbName>bookshelf</sql.dbName>                        <!-- A reasonable default -->
 <!-- Instance Connection Name - project:region:dbName -->

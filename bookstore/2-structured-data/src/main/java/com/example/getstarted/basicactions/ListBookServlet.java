@@ -16,7 +16,6 @@
 package com.example.getstarted.basicactions;
 
 import com.example.getstarted.daos.BookDao;
-import com.example.getstarted.daos.CloudSqlDao;
 import com.example.getstarted.daos.DatastoreDao;
 import com.example.getstarted.objects.Book;
 import com.example.getstarted.objects.Result;
@@ -46,17 +45,6 @@ public class ListBookServlet extends HttpServlet {
     switch (storageType) {
       case "datastore":
         dao = new DatastoreDao();
-        break;
-      case "cloudsql":
-        try {
-          String connect = this.getServletContext().getInitParameter("sql.urlRemote");
-          if (connect.contains("localhost")) {
-            connect = this.getServletContext().getInitParameter("sql.urlLocal");
-          }
-          dao = new CloudSqlDao(connect);
-        } catch (SQLException e) {
-          throw new ServletException("SQL error", e);
-        }
         break;
       default:
         throw new IllegalStateException(

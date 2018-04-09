@@ -15,6 +15,8 @@
 
 package com.example.getstarted.objects;
 
+import java.util.List;
+
 // [START example]
 public class Book {
     // [START book]
@@ -27,6 +29,9 @@ public class Book {
     private Long id;
     private String imageUrl;
     private double rating;
+    private double numberVotes;
+    private List<String> comments;
+
     // [END book]
     // [START keys]
     public static final String AUTHOR = "author";
@@ -38,6 +43,9 @@ public class Book {
     public static final String TITLE = "title";
     public static final String IMAGE_URL = "imageUrl";
     public static final String RATING = "rating";
+    public static final String NBVOTES = "numberVotes";
+    public static final String COMMENTS = "comments";
+
 
     // [END keys]
     // [START constructor]
@@ -52,6 +60,8 @@ public class Book {
         this.id = builder.id;
         this.imageUrl = builder.imageUrl;
         this.rating = builder.rating;
+        this.numberVotes = builder.numberVotes;
+        this.comments = builder.comments;
     }
     // [END constructor]
     // [START builder]
@@ -65,6 +75,8 @@ public class Book {
         private Long id;
         private String imageUrl;
         private double rating;
+        private double numberVotes;
+        private List<String> comments;
 
         public Builder title(String title) {
             this.title = title;
@@ -108,6 +120,16 @@ public class Book {
 
         public Builder rating(double rating) {
             this.rating = rating;
+            return this;
+        }
+
+        public Builder numberVotes(double numberVotes) {
+            this.numberVotes = numberVotes;
+            return this;
+        }
+
+        public Builder comments(List<String> comments){
+            this.comments = comments;
             return this;
         }
 
@@ -170,6 +192,22 @@ public class Book {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public double getNumberVotes() {
+        return numberVotes;
+    }
+
+    public void setNumberVotes(double numberVotes) {
+        this.numberVotes = numberVotes;
+    }
+
+    public List<String> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<String> comments) {
+        this.comments = comments;
     }
 
     public Long getId() {

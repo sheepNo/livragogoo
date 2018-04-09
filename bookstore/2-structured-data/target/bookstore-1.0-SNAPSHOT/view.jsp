@@ -24,6 +24,10 @@ Copyright 2016 Google Inc.
         <i class="glyphicon glyphicon-star"></i>
           Rate
       </a>
+      <a href="/comment?id=${book.id}" class="btn btn-info btn-sm">
+        <i class="glyphicon glyphicon-pencil"></i>
+          Comments
+      </a>
     <a href="/update?id=${book.id}" class="btn btn-primary btn-sm">
       <i class="glyphicon glyphicon-edit"></i>
       Edit
