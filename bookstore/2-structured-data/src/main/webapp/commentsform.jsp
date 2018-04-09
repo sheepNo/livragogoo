@@ -25,31 +25,13 @@ Copyright 2016 Google Inc.
 
     <!--ceci est super important. -->
     <input type="hidden" name="id" value="${book.id}" />
-
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" value="${fn:escapeXml(book.title)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="author">Author</label>
-      <input type="text" name="author" id="author" value="${fn:escapeXml(book.author)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="publishedDate">Date Published</label>
-      <input type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" name="description" id="description" value="${fn:escapeXml(book.description)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="rating">Rating</label>
-      <input type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" disabled/>
-    </div>
+    <input type="hidden" type="text" name="title" id="title" value="${fn:escapeXml(book.title)}"/>
+    <input type="hidden"  type="text" name="author" id="author" value="${fn:escapeXml(book.author)}"/>
+    <input type="hidden"  type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" />
+    <input type="hidden" type="text" name="numberVotes" id="numberVotes" value="${fn:escapeXml(book.numberVotes)}" />
+    <textarea style="display:none;" name="description" id="description">${fn:escapeXml(book.description)}</textarea>
+    <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
+    <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
 
     <div class="form-group">
       <label for="comments">Comments</label>

@@ -110,16 +110,18 @@ public class DatastoreDao implements BookDao {
   @Override
   public void commentsBook(Book book) {
     Key key = keyFactory.newKey(book.getId());  // From a book, create a Key
-    Entity old_entity = datastore.get(key);
-    List<String> comments = (ArrayList) entityToBook(old_entity).getComments();
-    comments.add(0, book.getComments().get(0));
+    /*Entity old_entity = datastore.get(key);
+    String comments = entityToBook(old_entity).getComments();
+    if (comments == null){
+        comments = "";
+    }*/
     Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
-        .set(Book.AUTHOR, book.getAuthor())
+        .set(Book.AUTHOR, "/$" + book.getComments() + book.getDescription())
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
         .set(Book.RATING, book.getRating())
-        //.set(Book.COMMENTS, comments)
+        //.set(Book.COMMENTS, comments + "/$" + book.getComments())
         .build();
     datastore.update(entity);                   // Update the Entity
   }

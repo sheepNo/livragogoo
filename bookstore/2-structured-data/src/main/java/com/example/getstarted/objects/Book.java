@@ -30,7 +30,7 @@ public class Book {
     private String imageUrl;
     private double rating;
     private double numberVotes;
-    private List<String> comments;
+    private String comments;
 
     // [END book]
     // [START keys]
@@ -76,7 +76,7 @@ public class Book {
         private String imageUrl;
         private double rating;
         private double numberVotes;
-        private List<String> comments;
+        private String comments;
 
         public Builder title(String title) {
             this.title = title;
@@ -128,7 +128,7 @@ public class Book {
             return this;
         }
 
-        public Builder comments(List<String> comments){
+        public Builder comments(String comments){
             this.comments = comments;
             return this;
         }
@@ -202,11 +202,11 @@ public class Book {
         this.numberVotes = numberVotes;
     }
 
-    public List<String> getComments() {
+    public String getComments() {
         return comments;
     }
 
-    public void setComments(List<String> comments) {
+    public void setComments(String comments) {
         this.comments = comments;
     }
 

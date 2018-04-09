@@ -23,34 +23,27 @@ Copyright 2016 Google Inc.
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
 
-    <!--ceci est super important. -->
+    <!--This is super important. -->
+    <%-- <input type="hidden" name="oldRating" id="oldRating" value="${book.rating}" /> --%>
     <input type="hidden" name="id" value="${book.id}" />
+    <input type="hidden" type="text" name="title" id="title" value="${fn:escapeXml(book.title)}"/>
+    <input type="hidden"  type="text" name="author" id="author" value="${fn:escapeXml(book.author)}"/>
+    <input type="hidden"  type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" />
+    <input type="hidden" type="text" name="numberVotes" id="numberVotes" value="${fn:escapeXml(book.numberVotes)}" />
+    <textarea style="display:none;" name="description" id="description">${fn:escapeXml(book.description)}</textarea>
+    <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
 
     <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" value="${fn:escapeXml(book.title)}" class="form-control" disabled/>
+      <label for="bufRating">Rating</label>
+      <input type="text" name="bufRating" id="bufRating" placeholder="Enter your rating here" class="form-control" />
     </div>
 
-    <div class="form-group">
-      <label for="author">Author</label>
-      <input type="text" name="author" id="author" value="${fn:escapeXml(book.author)}" class="form-control" disabled/>
-    </div>
+    <%-- <select id="rating" name="${book.rating}" class="custom-select">
+      <option selected>Open this select menu</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select> --%>
 
-    <div class="form-group">
-      <label for="publishedDate">Date Published</label>
-      <input type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" class="form-control" disabled/>
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
-    </div>
-
-
-    <div class="form-group">
-      <label for="rating">Rating</label>
-      <input type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
-    </div>
 
     <button type="submit" class="btn btn-success">Save</button>
   </form>

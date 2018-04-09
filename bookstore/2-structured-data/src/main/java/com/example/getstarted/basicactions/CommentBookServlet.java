@@ -41,8 +41,6 @@ public class CommentBookServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
         BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
-        List<String> newComments = new ArrayList<String> ();
-        newComments.add(req.getParameter("comments"));
         try {
             // [START bookBuilder]
             Book book = new Book.Builder()
@@ -52,7 +50,7 @@ public class CommentBookServlet extends HttpServlet {
             .title(req.getParameter("title"))
             .id(Long.decode(req.getParameter("id")))
             .rating(Double.parseDouble(req.getParameter("rating")))
-            .comments(newComments)
+            .comments(req.getParameter("comments"))
             .build();
             // [END bookBuilder]
             dao.commentsBook(book);
