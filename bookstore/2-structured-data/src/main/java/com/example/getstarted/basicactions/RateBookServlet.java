@@ -45,8 +45,8 @@ public class RateBookServlet extends HttpServlet {
             .publishedDate(req.getParameter("publishedDate"))
             .title(req.getParameter("title"))
             .id(Long.decode(req.getParameter("id")))
-            .rating(Double.parseDouble(req.getParameter("bufRating")))
-            .bufRating(Double.parseDouble(req.getParameter("rating")))
+            .rating(Double.parseDouble(req.getParameter("rating")))
+            .bufRating(Double.parseDouble(req.getParameter("bufRating")))
             .numberVotes(Double.parseDouble(req.getParameter("numberVotes")))
             .build();
             dao.rateBook(book);

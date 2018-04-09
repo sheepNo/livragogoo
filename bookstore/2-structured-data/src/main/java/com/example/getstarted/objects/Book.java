@@ -58,6 +58,7 @@ public class Book {
         this.id = builder.id;
         this.imageUrl = builder.imageUrl;
         this.rating = builder.rating;
+        this.bufRating = builder.bufRating;
         this.numberVotes = builder.numberVotes;
     }
     // [END constructor]
