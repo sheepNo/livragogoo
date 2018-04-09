@@ -54,6 +54,10 @@ public class DatastoreDao implements BookDao {
         .publishedDate(entity.getString(Book.PUBLISHED_DATE))
         .title(entity.getString(Book.TITLE))
         .rating(entity.getDouble(Book.RATING))
+        .bufRating(entity.getDouble(Book.BUFRATING))
+        .numberVotes(entity.getDouble(Book.NBVOTES))
+        .comments(entity.getString(Book.COMMENTS))
+        .bufComments(entity.getString(Book.BUFCOMMENTS))
         .build();
   }
   // [END entityToBook]
@@ -67,6 +71,10 @@ public class DatastoreDao implements BookDao {
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
         .set(Book.RATING, book.getRating())
+        .set(Book.BUFRATING, book.getBufRating())
+        .set(Book.NBVOTES, book.getNumberVotes())
+        .set(Book.COMMENTS, book.getComments())
+        .set(Book.BUFCOMMENTS, book.getBufComments())
         .build();
     Entity bookEntity = datastore.add(incBookEntity); // Save the Entity
     return bookEntity.getKey().getId();                     // The ID of the Key
@@ -89,6 +97,10 @@ public class DatastoreDao implements BookDao {
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
         .set(Book.RATING, book.getRating())
+        .set(Book.BUFRATING, book.getBufRating())
+        .set(Book.NBVOTES, book.getNumberVotes())
+        .set(Book.COMMENTS, book.getComments())
+        .set(Book.BUFCOMMENTS, book.getBufComments())
         .build();
     datastore.update(entity);                   // Update the Entity
   }
@@ -102,24 +114,32 @@ public class DatastoreDao implements BookDao {
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
-        .set(Book.RATING, book.getRating())
+        .set(Book.RATING, (book.getBufRating() + book.getRating() * book.getNumberVotes()) / (book.getNumberVotes() + 1))
+        .set(Book.BUFRATING, book.getBufRating())
+        .set(Book.NBVOTES, book.getNumberVotes()+1)
+        .set(Book.COMMENTS, book.getComments())
+        .set(Book.BUFCOMMENTS, book.getBufComments())
         .build();
     datastore.update(entity);                   // Update the Entity
   }
   // [END rate]
+  // [START comments]
   @Override
   public void commentsBook(Book book) {
     Key key = keyFactory.newKey(book.getId());  // From a book, create a Key
     Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
-        .set(Book.AUTHOR, "/$" + book.getComments() + book.getDescription())
+        .set(Book.AUTHOR, book.getAuthor())
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
         .set(Book.RATING, book.getRating())
-        //.set(Book.COMMENTS, comments + "/$" + book.getComments())
+        .set(Book.NBVOTES, book.getNumberVotes())
+        .set(Book.COMMENTS, book.getBufComments() + "/$" + book.getComments())
+        .set(Book.BUFCOMMENTS, book.getBufComments())
         .build();
     datastore.update(entity);                   // Update the Entity
   }
+  // [END comments]
   // [START delete]
   @Override
   public void deleteBook(Long bookId) {

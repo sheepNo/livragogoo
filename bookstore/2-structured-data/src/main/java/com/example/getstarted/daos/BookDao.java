@@ -18,7 +18,6 @@ package com.example.getstarted.daos;
 import com.example.getstarted.objects.Book;
 import com.example.getstarted.objects.Result;
 
-
 // [START example]
 public interface BookDao {
     Long createBook(Book book);

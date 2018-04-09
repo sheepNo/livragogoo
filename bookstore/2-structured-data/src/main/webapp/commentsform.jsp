@@ -18,12 +18,13 @@ Copyright 2016 Google Inc.
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="container">
   <h3>
-    <c:out value="${action}" /> book
+    <c:out value="${action} ${book.title}" />
   </h3>
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
 
-    <!--ceci est super important. -->
+    <!--This is super important. -->
+    <%-- <input type="hidden" name="oldRating" id="oldRating" value="${book.rating}" /> --%>
     <input type="hidden" name="id" value="${book.id}" />
     <input type="hidden" type="text" name="title" id="title" value="${fn:escapeXml(book.title)}"/>
     <input type="hidden"  type="text" name="author" id="author" value="${fn:escapeXml(book.author)}"/>
@@ -31,14 +32,23 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="numberVotes" id="numberVotes" value="${fn:escapeXml(book.numberVotes)}" />
     <textarea style="display:none;" name="description" id="description">${fn:escapeXml(book.description)}</textarea>
     <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
+    <input type="hidden" type="text" name="bufRating" id="bufRating" value="${fn:escapeXml(book.bufRating)}" />
     <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
 
+
     <div class="form-group">
-      <label for="comments">Comments</label>
-      <input type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" class="form-control" />
+      <label for="bufComments">Comments</label>
+      <input type="text" name="bufComments" id="bufComments" placeholder="Enter your comments here" class="form-control" />
     </div>
 
-    <button type="submit" class="btn btn-success">Save</button>
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-check"></i>
+    </button>
+
+    <a href="/read?id=${book.id}" class="btn btn-danger">
+        <i class="fas fa-times"></i>
+    </a>
+
   </form>
 </div>
 <!-- [END form] -->

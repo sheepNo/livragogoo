@@ -19,7 +19,7 @@ Copyright 2016 Google Inc.
 <div class="container">
   <h3>Books</h3>
   <a href="/create" class="btn btn-success btn-sm">
-    <i class="glyphicon glyphicon-plus"></i>
+    <i class="fas fa-plus"></i>
     Add book
   </a>
   <c:choose>

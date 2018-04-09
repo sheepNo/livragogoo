@@ -1,10 +1,10 @@
 com/example/getstarted/basicactions/DeleteBookServlet.class
+com/example/getstarted/basicactions/CommentsBookServlet.class
 com/example/getstarted/objects/Book$Builder.class
 com/example/getstarted/objects/Result.class
 com/example/getstarted/basicactions/UpdateBookServlet.class
 com/example/getstarted/basicactions/CreateBookServlet.class
 com/example/getstarted/util/DatastoreSessionFilter.class
-com/example/getstarted/basicactions/CommentBookServlet.class
 com/example/getstarted/objects/Book$1.class
 com/example/getstarted/daos/BookDao.class
 com/example/getstarted/objects/Book.class

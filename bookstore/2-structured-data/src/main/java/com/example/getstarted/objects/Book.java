@@ -15,8 +15,6 @@
 
 package com.example.getstarted.objects;
 
-import java.util.List;
-
 // [START example]
 public class Book {
     // [START book]
@@ -29,8 +27,11 @@ public class Book {
     private Long id;
     private String imageUrl;
     private double rating;
+    private double bufRating;
     private double numberVotes;
     private String comments;
+    private String bufComments;
+
 
     // [END book]
     // [START keys]
@@ -43,9 +44,10 @@ public class Book {
     public static final String TITLE = "title";
     public static final String IMAGE_URL = "imageUrl";
     public static final String RATING = "rating";
+    public static final String BUFRATING = "bufRating";
     public static final String NBVOTES = "numberVotes";
     public static final String COMMENTS = "comments";
-
+    public static final String BUFCOMMENTS = "bufComments";
 
     // [END keys]
     // [START constructor]
@@ -60,8 +62,10 @@ public class Book {
         this.id = builder.id;
         this.imageUrl = builder.imageUrl;
         this.rating = builder.rating;
+        this.bufRating = builder.bufRating;
         this.numberVotes = builder.numberVotes;
         this.comments = builder.comments;
+        this.bufComments = builder.bufComments;
     }
     // [END constructor]
     // [START builder]
@@ -75,8 +79,10 @@ public class Book {
         private Long id;
         private String imageUrl;
         private double rating;
+        private double bufRating;
         private double numberVotes;
         private String comments;
+        private String bufComments;
 
         public Builder title(String title) {
             this.title = title;
@@ -123,13 +129,23 @@ public class Book {
             return this;
         }
 
+        public Builder bufRating(double bufRating) {
+            this.bufRating = bufRating;
+            return this;
+        }
+
         public Builder numberVotes(double numberVotes) {
             this.numberVotes = numberVotes;
             return this;
         }
 
-        public Builder comments(String comments){
+        public Builder comments(String comments) {
             this.comments = comments;
+            return this;
+        }
+
+        public Builder bufComments(String bufComments) {
+            this.bufComments = bufComments;
             return this;
         }
 
@@ -194,20 +210,36 @@ public class Book {
         this.rating = rating;
     }
 
-    public double getNumberVotes() {
-        return numberVotes;
-    }
-
-    public void setNumberVotes(double numberVotes) {
-        this.numberVotes = numberVotes;
-    }
-
     public String getComments() {
         return comments;
     }
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public String getBufComments() {
+        return bufComments;
+    }
+
+    public void setBufComments(String bufComments) {
+        this.bufComments = bufComments;
+    }
+
+    public double getBufRating() {
+        return bufRating;
+    }
+
+    public void setBufRating(double bufRating) {
+        this.rating = bufRating;
+    }
+
+    public double getNumberVotes() {
+        return numberVotes;
+    }
+
+    public void setNumberVotes(double numberVotes) {
+        this.numberVotes = numberVotes;
     }
 
     public Long getId() {

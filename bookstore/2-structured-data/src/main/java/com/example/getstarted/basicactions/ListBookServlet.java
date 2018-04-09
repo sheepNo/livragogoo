@@ -21,7 +21,6 @@ import com.example.getstarted.objects.Book;
 import com.example.getstarted.objects.Result;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -37,7 +36,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ListBookServlet extends HttpServlet {
 
   @Override
-  public void init() throws ServletException {
+  public void init(){
     BookDao dao = null;
 
     // Creates the DAO based on the Context Parameters

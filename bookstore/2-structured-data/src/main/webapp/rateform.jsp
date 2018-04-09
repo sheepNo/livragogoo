@@ -18,7 +18,7 @@ Copyright 2016 Google Inc.
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="container">
   <h3>
-    <c:out value="${action}" /> book
+    <c:out value="${action} ${book.title}" />
   </h3>
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
@@ -32,11 +32,21 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="numberVotes" id="numberVotes" value="${fn:escapeXml(book.numberVotes)}" />
     <textarea style="display:none;" name="description" id="description">${fn:escapeXml(book.description)}</textarea>
     <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
+    <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
+    <input type="hidden" type="text" name="bufComments" id="bufComments" value="${fn:escapeXml(book.bufComments)}" />
 
-    <div class="form-group">
+    <%-- <div class="form-group">
       <label for="bufRating">Rating</label>
       <input type="text" name="bufRating" id="bufRating" placeholder="Enter your rating here" class="form-control" />
-    </div>
+    </div> --%>
+
+    <select name="bufRating" id="bufRating" class="custom-select custom-select-lg">
+      <option value="20">1</option>
+      <option value="40">2</option>
+      <option value="60" selected>3</option>
+      <option value="80">4</option>
+      <option value="100">5</option>
+    </select>
 
     <%-- <select id="rating" name="${book.rating}" class="custom-select">
       <option selected>Open this select menu</option>
@@ -45,7 +55,14 @@ Copyright 2016 Google Inc.
     </select> --%>
 
 
-    <button type="submit" class="btn btn-success">Save</button>
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-check"></i>
+    </button>
+
+    <a href="/read?id=${book.id}" class="btn btn-danger">
+        <i class="fas fa-times"></i>
+    </a>
+
   </form>
 </div>
 <!-- [END form] -->
