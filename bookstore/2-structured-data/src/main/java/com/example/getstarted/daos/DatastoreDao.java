@@ -54,6 +54,7 @@ public class DatastoreDao implements BookDao {
         .publishedDate(entity.getString(Book.PUBLISHED_DATE))
         .title(entity.getString(Book.TITLE))
         .rating(entity.getDouble(Book.RATING))
+        .numberVotes(entity.getDouble(Book.NBVOTES))
         .build();
   }
   // [END entityToBook]
@@ -67,6 +68,7 @@ public class DatastoreDao implements BookDao {
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
         .set(Book.RATING, book.getRating())
+        .set(Book.NBVOTES, book.getNumberVotes())
         .build();
     Entity bookEntity = datastore.add(incBookEntity); // Save the Entity
     return bookEntity.getKey().getId();                     // The ID of the Key
@@ -89,6 +91,7 @@ public class DatastoreDao implements BookDao {
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
         .set(Book.RATING, book.getRating())
+        .set(Book.NBVOTES, book.getNumberVotes())
         .build();
     datastore.update(entity);                   // Update the Entity
   }
@@ -103,6 +106,9 @@ public class DatastoreDao implements BookDao {
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
         .set(Book.RATING, book.getRating())
+        // (book.getRating() * book.getNumberVotes() + book.getBufRating()) / (book.getNumberVotes()+1))
+        .set(Book.BUFRATING, book.getBufRating())
+        .set(Book.NBVOTES, book.getNumberVotes()+1)
         .build();
     datastore.update(entity);                   // Update the Entity
   }

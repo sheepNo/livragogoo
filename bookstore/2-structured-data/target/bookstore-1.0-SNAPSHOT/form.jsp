@@ -42,10 +42,7 @@ Copyright 2016 Google Inc.
     </div>
 
 
-        <div class="form-group">
-          <label for="rating">Rating</label>
-          <input type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
-        </div>
+      <input type="hidden" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
 
     <div class="form-group">
       <label for="description">Description</label>

@@ -27,6 +27,7 @@ public class Book {
     private Long id;
     private String imageUrl;
     private double rating;
+    private double bufRating;
     private double numberVotes;
 
     // [END book]
@@ -40,7 +41,8 @@ public class Book {
     public static final String TITLE = "title";
     public static final String IMAGE_URL = "imageUrl";
     public static final String RATING = "rating";
-    public static final String NBVOTES = "rating";
+    public static final String BUFRATING = "bufRating";
+    public static final String NBVOTES = "numberVotes";
 
 
     // [END keys]
@@ -70,6 +72,7 @@ public class Book {
         private Long id;
         private String imageUrl;
         private double rating;
+        private double bufRating;
         private double numberVotes;
 
         public Builder title(String title) {
@@ -114,6 +117,11 @@ public class Book {
 
         public Builder rating(double rating) {
             this.rating = rating;
+            return this;
+        }
+
+        public Builder bufRating(double bufRating) {
+            this.bufRating = bufRating;
             return this;
         }
 
@@ -181,6 +189,14 @@ public class Book {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public double getBufRating() {
+        return bufRating;
+    }
+
+    public void setBufRating(double bufRating) {
+        this.rating = bufRating;
     }
 
     public double getNumberVotes() {

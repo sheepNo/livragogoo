@@ -44,7 +44,7 @@ Copyright 2016 Google Inc.
         <small>${fn:escapeXml(book.publishedDate)}</small>
       </h4>
       <h5 class="book-author">By ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</h5>
-      <p>rating: ${fn:escapeXml(book.rating)} (${fn:escapeXml(0)} votes)</p>
+      <p>rating: ${fn:escapeXml(book.rating)} (${fn:escapeXml(book.numberVotes)} votes)</p>
       <p class="book-description">${fn:escapeXml(book.description)}</p>
       <small class="book-added-by">Added by
         ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')}</small>
