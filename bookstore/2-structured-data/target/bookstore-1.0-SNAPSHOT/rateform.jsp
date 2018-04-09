@@ -39,11 +39,11 @@ Copyright 2016 Google Inc.
     </div> --%>
 
     <select name="bufRating" id="bufRating" class="custom-select custom-select-lg">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3" selected>3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+      <option value="20">1</option>
+      <option value="40">2</option>
+      <option value="60" selected>3</option>
+      <option value="80">4</option>
+      <option value="100">5</option>
     </select>
 
     <%-- <select id="rating" name="${book.rating}" class="custom-select">
@@ -54,11 +54,11 @@ Copyright 2016 Google Inc.
 
 
     <button type="submit" class="btn btn-success">
-        <i class="glyphicon glyphicon-ok"></i>
+        <i class="fas fa-check"></i>
     </button>
 
-    <a href="/rate?id=${book.id}" class="btn btn-danger">
-        <i class="glyphicon glyphicon-remove"></i>
+    <a href="/read?id=${book.id}" class="btn btn-danger">
+        <i class="fas fa-times"></i>
     </a>
 
   </form>
