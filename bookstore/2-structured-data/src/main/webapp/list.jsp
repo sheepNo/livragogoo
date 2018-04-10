@@ -30,35 +30,30 @@ Copyright 2016 Google Inc.
   <c:otherwise>
   <c:forEach items="${books}" var="book">
 
-      <div class="card" style="width: 20%; margin:1em;">
-
-          <%-- <div class="card-header">Header</div> --%>
-
+      <div class="card" style="width: 25%; margin:1em;">
         <a href="/read?id=${book.id}">
-            <img class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
+            <img style="max-width:200px" class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
         </a>
 
         <div class="card-body">
-          <%-- <p class="card-text"> --%>
-              ${fn:escapeXml(not empty book.title?book.title:'Unknown')}
-              <small>by ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</small>
-              <div class="progress">
-                    <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-          <%-- </p> --%>
+            <h5>${fn:escapeXml(not empty book.title?book.title:'Unknown')}</h5>
+            <small>by ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</small>
+            <%-- <div class="progress">
+                <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div> --%>
         </div>
       </div>
 
-  </c:forEach>
-  <c:if test="${not empty cursor}">
-  <nav>
+    </c:forEach>
+    <c:if test="${not empty cursor}">
+    <nav>
     <ul class="pager">
-      <li><a href="?cursor=${fn:escapeXml(cursor)}">More</a></li>
+        <li><a href="?cursor=${fn:escapeXml(cursor)}">More</a></li>
     </ul>
-  </nav>
-  </c:if>
-  </c:otherwise>
-  </c:choose>
+    </nav>
+    </c:if>
+    </c:otherwise>
+    </c:choose>
 </div>
 </div>
 

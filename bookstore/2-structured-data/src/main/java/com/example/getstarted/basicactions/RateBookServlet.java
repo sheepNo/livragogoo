@@ -50,6 +50,7 @@ public class RateBookServlet extends HttpServlet {
             .numberVotes(Double.parseDouble(req.getParameter("numberVotes")))
             .comments(req.getParameter("comments"))
             .bufComments(req.getParameter("bufComments"))
+            .imageUrl(req.getParameter("imageUrl"))
             .build();
             dao.rateBook(book);
             resp.sendRedirect("/read?id=" + req.getParameter("id"));

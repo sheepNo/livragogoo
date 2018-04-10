@@ -37,6 +37,11 @@ Copyright 2016 Google Inc.
     </div>
 
     <div class="form-group">
+      <label for="imageUrl">Book cover URL</label>
+      <input type="text" name="imageUrl" id="imageUrl" value="${fn:escapeXml(book.imageUrl)}" class="form-control" />
+    </div>
+
+    <div class="form-group">
       <label for="publishedDate">Date Published</label>
       <input type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" class="form-control" />
     </div>
@@ -47,7 +52,7 @@ Copyright 2016 Google Inc.
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
+      <textarea style="min-height: 250px" name="description" id="description" class="form-control">${fn:escapeXml(book.description)}</textarea>
     </div>
 
 

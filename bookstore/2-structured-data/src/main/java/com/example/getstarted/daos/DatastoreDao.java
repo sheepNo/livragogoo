@@ -57,6 +57,7 @@ public class DatastoreDao implements BookDao {
         //.bufRating(entity.getDouble(Book.BUFRATING))
         .numberVotes(entity.getDouble(Book.NBVOTES))
         .comments(entity.getString(Book.COMMENTS))
+        .imageUrl(entity.getString(Book.IMAGE_URL))
         //.bufComments(entity.getString(Book.BUFCOMMENTS))
         .build();
   }
@@ -70,6 +71,7 @@ public class DatastoreDao implements BookDao {
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
+        .set(Book.IMAGE_URL, book.getImageUrl())
         .set(Book.RATING, 0.0)
         //.set(Book.BUFRATING, 0.0)
         .set(Book.NBVOTES, 0.0)
@@ -96,6 +98,7 @@ public class DatastoreDao implements BookDao {
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
+        .set(Book.IMAGE_URL, book.getImageUrl())
         .set(Book.RATING, book.getRating())
         //.set(Book.BUFRATING, book.getBufRating())
         .set(Book.NBVOTES, book.getNumberVotes())

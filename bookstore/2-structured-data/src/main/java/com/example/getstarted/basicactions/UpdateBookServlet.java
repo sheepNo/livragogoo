@@ -61,6 +61,7 @@ public class UpdateBookServlet extends HttpServlet {
             .id(Long.decode(req.getParameter("id")))
             .publishedDate(req.getParameter("publishedDate"))
             .title(req.getParameter("title"))
+            .imageUrl(req.getParameter("imageUrl"))
             .rating(Double.parseDouble(req.getParameter("rating")))
             // .bufRating(Double.parseDouble(req.getParameter("bufRating")))
             //.numberVotes(Double.parseDouble(req.getParameter("numberVotes")))

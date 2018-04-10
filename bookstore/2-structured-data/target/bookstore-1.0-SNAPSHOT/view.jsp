@@ -16,100 +16,121 @@ Copyright 2016 Google Inc.
 <!-- [START view] -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<div class="container">
-  <h2>
-      <c:out value="${book.title}" />
-      <small class="book-added-by">(Added by
-        ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')})</small>
-  </h2>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<div class="container">
 
   <div style="margin-bottom: 0.5em" class="media">
     <div style="margin-right: 1em" class="media-left">
-      <img class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/256/192')}">
+      <img style="max-width:250px" class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/256/192')}">
     </div>
     <div class="media-body">
       <h3 class="book-title">
-        ${fn:escapeXml(book.title)}
+        ${fn:escapeXml(not empty book.title?book.title:'Unknown')}
         <small>${fn:escapeXml(book.publishedDate)}</small>
     </h3>
       <h4 class="book-author">By ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</h4>
-      <p>
+      <p><small class="book-added-by">
+          (added by ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')})
+      </small>
+  </p>
+  <p>
       <a href="/rate?id=${book.id}" class="btn btn-warning btn-sm">
         <i class="fa fa-star"></i>
           Rate
       </a>
-      (${book.numberVotes} votes)
-    </p>
-      <%-- <p>rating: --%>
-    <div class="progress">
+      <c:set var="doubleRating" value="${book.numberVotes}" />
+      <fmt:parseNumber var="intRating" integerOnly="true"
+                             type="number" value="${doubleRating}" />
+      (${intRating} votes)
+  </p>
+    <div style="max-width: 300px;" class="progress">
           <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-     <%-- </p> --%>
+
+<%--
+      <div class="card" style="width: 100%;">
+        <div class="card-header">
+          Featured
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+              <h3 class="book-title">
+                ${fn:escapeXml(not empty book.title?book.title:'Unknown')}
+                <small>${fn:escapeXml(book.publishedDate)}</small>
+            </h3>
+        </li>
+          <li class="list-group-item">
+                    <h4 class="book-author">By ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</h4>
+        </li>
+        <li class="list-group-item">
+            <p><small class="book-added-by">
+            (added by ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')})
+        </small>
+    </p>
+</li>
+          <li class="list-group-item">
+              <p>
+              <a href="/rate?id=${book.id}" class="btn btn-warning btn-sm">
+                <i class="fa fa-star"></i>
+                  Rate
+              </a>
+              (${book.numberVotes} votes)
+          </p>
+              <div style="max-width: 300px;" class="progress">
+                    <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+          </li>
+        </ul>
+      </div> --%>
+
     </div>
 </div>
 
-<p style="word-wrap: break-word;
-   width: 100%;" class="book-description">
-    Description: ${fn:escapeXml(book.description)}
-</p>
+<div class="card bg-light mb-3" style="max-width: 100%">
+    <div style="display: flex; justify-content: space-between;" class="card-header">
+        <div>
+            Description:
+        </div>
+        <div >
+            <a href="/update?id=${book.id}" class="btn btn-primary btn-sm" role="button">
+                <i class="fa fa-edit"></i>
+                Edit
+            </a>
+            <a href="/delete?id=${book.id}" class="btn btn-danger btn-sm">
+                <i class="fas fa-trash-alt"></i>
+                Delete
+            </a>
+        </div>
+    </div>
 
-
-      <%-- <div style="margin-bottom:2.5em" class="btn-group"> --%>
-    <p>
-        <a href="/update?id=${book.id}" class="btn btn-primary btn-sm" role="button">
-            <i class="fa fa-edit"></i>
-         Edit
-        </a>
-        <a href="/delete?id=${book.id}" class="btn btn-danger btn-sm">
-          <i class="fas fa-trash-alt"></i>
-          Delete
-        </a>
-    </p>
-      <%-- </div> --%>
-
-
-
-  <%-- <c:choose>
-  <c:when test="${empty comments}"> --%>
+    <div class="card-body">
+        <p class="card-text">
+            ${fn:escapeXml(book.description)}
+        </p>
+    </div>
+</div>
 
   <div  style="margin-top: 1em; width: 100%;">
-
-  <%-- <c:choose>
-  <c:when test="${empty listComments}">
-  <p>No comments found</p>
-  </c:when>
-  <c:otherwise>--%>
       <div class="card">
-      <div class="card-header">
-        Comments:
-      </div>
-          </ul>
-          <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
+      <div  style="display: flex; justify-content: space-between;" class="card-header" class="card-header">
+          <div>
+              Comments:
+          </div>
+          <div>
+            <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
               <i class="fa fa-comment"></i>
-              Add a comment!
-          </a>
-          <ul class="list-group list-group-flush">
-
+              Add a comment
+            </a>
+          </div>
+      </div>
       <c:forEach items="${listComments}" var="comment">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">${fn:escapeXml(comment)}</li>
           </ul>
       </c:forEach>
-
       </div>
-
-  <%-- <c:if test="${not empty cursor}">
-  <nav>
-    <ul class="pager">
-      <li><a href="?cursor=${fn:escapeXml(cursor)}">More</a></li>
-    </ul>
-  </nav>
-  </c:if> --%>
-<%--
-  </c:otherwise>
-  </c:choose> --%>
-
 </div>
 </div>
 <!-- [END view] -->

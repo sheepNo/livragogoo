@@ -57,7 +57,7 @@ public class CreateBookServlet extends HttpServlet {
         .description(req.getParameter("description"))
         .publishedDate(req.getParameter("publishedDate"))
         .title(req.getParameter("title"))
-        .imageUrl(null)
+        .imageUrl(req.getParameter("imageUrl"))
         .build();
 // [END bookBuilder]
     try {

@@ -25,7 +25,7 @@ public class CommentsBookServlet extends HttpServlet {
         try {
             Book book = dao.readBook(Long.decode(req.getParameter("id")));
             req.setAttribute("book", book);
-            req.setAttribute("action", "Comments");
+            req.setAttribute("action", "Comment");
             req.setAttribute("destination", "comments");
             req.setAttribute("page", "commentsform");
             req.getRequestDispatcher("/base.jsp").forward(req, resp);
@@ -44,6 +44,7 @@ public class CommentsBookServlet extends HttpServlet {
             .description(req.getParameter("description"))
             .publishedDate(req.getParameter("publishedDate"))
             .title(req.getParameter("title"))
+            .imageUrl(req.getParameter("imageUrl"))
             .id(Long.decode(req.getParameter("id")))
             .rating(Double.parseDouble(req.getParameter("rating")))
             .bufRating(Double.parseDouble(req.getParameter("bufRating")))

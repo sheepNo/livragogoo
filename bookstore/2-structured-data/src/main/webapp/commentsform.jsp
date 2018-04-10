@@ -34,10 +34,11 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
     <input type="hidden" type="text" name="bufRating" id="bufRating" value="${fn:escapeXml(book.bufRating)}" />
     <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
+    <input type="hidden" type="text" name="imageUrl" id="imageUrl" value="${fn:escapeXml(book.imageUrl)}" />
 
     <div class="form-group">
       <label for="bufComments"></label>
-      <textarea name="bufComments" id="bufComments" class="form-control">${fn:escapeXml(book.bufComments)}</textarea>
+      <textarea style="min-height: 400px;" name="bufComments" id="bufComments" class="form-control">${fn:escapeXml(book.bufComments)}</textarea>
     </div>
 
     <button type="submit" class="btn btn-success">

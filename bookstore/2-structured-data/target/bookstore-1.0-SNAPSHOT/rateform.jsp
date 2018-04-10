@@ -33,6 +33,8 @@ Copyright 2016 Google Inc.
     <textarea style="display:none;" name="description" id="description">${fn:escapeXml(book.description)}</textarea>
     <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
     <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
+    <input type="hidden" type="text" name="imageUrl" id="imageUrl" value="${fn:escapeXml(book.imageUrl)}" />
+
     <%-- <input type="hidden" type="text" name="bufComments" id="bufComments" value="${fn:escapeXml(book.bufComments)}" /> --%>
 
     <%-- <div class="form-group">
@@ -40,7 +42,9 @@ Copyright 2016 Google Inc.
       <input type="text" name="bufRating" id="bufRating" placeholder="Enter your rating here" class="form-control" />
     </div> --%>
 
-    <select name="bufRating" id="bufRating" class="custom-select custom-select-lg">
+    <div style="display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap;">
+    <div>
+    <select style="max-width:300px" name="bufRating" id="bufRating" class="custom-select custom-select-lg">
       <%-- <option value="0">0</option> --%>
       <option value="20">1</option>
       <option value="40">2</option>
@@ -48,21 +52,17 @@ Copyright 2016 Google Inc.
       <option value="80">4</option>
       <option value="100">5</option>
     </select>
+    </div>
 
-    <%-- <select id="rating" name="${book.rating}" class="custom-select">
-      <option selected>Open this select menu</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-    </select> --%>
-
-
+    <div style="margin-left: 0.5em; margin-right: 0.5em">
     <button type="submit" class="btn btn-success">
         <i class="fas fa-check"></i>
     </button>
-
     <a href="/read?id=${book.id}" class="btn btn-danger">
         <i class="fas fa-times"></i>
     </a>
+    </div>
+    </div>
 
   </form>
 </div>
