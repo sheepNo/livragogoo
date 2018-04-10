@@ -47,7 +47,7 @@ Copyright 2016 Google Inc.
     </div>
 
     <input type="hidden" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
-
+    <input type="hidden" name="numberVotes" id="numberVotes" value="${fn:escapeXml(book.numberVotes)}" class="form-control" />
     <input type="hidden" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" class="form-control" />
 
     <div class="form-group">
