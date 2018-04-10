@@ -18,20 +18,20 @@ package com.example.getstarted.daos;
 import com.example.getstarted.objects.Book;
 import com.example.getstarted.objects.Result;
 
-import java.sql.SQLException;
-
 // [START example]
 public interface BookDao {
-    Long createBook(Book book) throws SQLException;
+    Long createBook(Book book);
 
-    Book readBook(Long bookId) throws SQLException;
+    Book readBook(Long bookId);
 
-    void updateBook(Book book) throws SQLException;
+    void updateBook(Book book);
 
-    void rateBook(Book book) throws SQLException;
+    void rateBook(Book book);
 
-    void deleteBook(Long bookId) throws SQLException;
+    void deleteBook(Long bookId);
 
-    Result<Book> listBooks(String startCursor) throws SQLException;
+    void commentsBook(Book book);
+
+    Result<Book> listBooks(String startCursor);
 }
 // [END example]

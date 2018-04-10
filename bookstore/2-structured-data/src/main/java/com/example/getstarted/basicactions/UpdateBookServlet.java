@@ -62,6 +62,10 @@ public class UpdateBookServlet extends HttpServlet {
             .publishedDate(req.getParameter("publishedDate"))
             .title(req.getParameter("title"))
             .rating(Double.parseDouble(req.getParameter("rating")))
+            // .bufRating(Double.parseDouble(req.getParameter("bufRating")))
+            //.numberVotes(Double.parseDouble(req.getParameter("numberVotes")))
+            .comments(req.getParameter("comments"))
+            //.bufComments(req.getParameter("bufComments"))
             .build();
             // [END bookBuilder]
             dao.updateBook(book);

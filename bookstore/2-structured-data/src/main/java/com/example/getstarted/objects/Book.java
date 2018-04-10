@@ -29,6 +29,12 @@ public class Book {
     private double rating;
     private double bufRating;
     private double numberVotes;
+<<<<<<< HEAD
+=======
+    private String comments;
+    private String bufComments;
+
+>>>>>>> florian
 
     // [END book]
     // [START keys]
@@ -43,7 +49,8 @@ public class Book {
     public static final String RATING = "rating";
     public static final String BUFRATING = "bufRating";
     public static final String NBVOTES = "numberVotes";
-
+    public static final String COMMENTS = "comments";
+    public static final String BUFCOMMENTS = "bufComments";
 
     // [END keys]
     // [START constructor]
@@ -60,6 +67,8 @@ public class Book {
         this.rating = builder.rating;
         this.bufRating = builder.bufRating;
         this.numberVotes = builder.numberVotes;
+        this.comments = builder.comments;
+        this.bufComments = builder.bufComments;
     }
     // [END constructor]
     // [START builder]
@@ -75,6 +84,8 @@ public class Book {
         private double rating;
         private double bufRating;
         private double numberVotes;
+        private String comments;
+        private String bufComments;
 
         public Builder title(String title) {
             this.title = title;
@@ -128,6 +139,16 @@ public class Book {
 
         public Builder numberVotes(double numberVotes) {
             this.numberVotes = numberVotes;
+            return this;
+        }
+
+        public Builder comments(String comments) {
+            this.comments = comments;
+            return this;
+        }
+
+        public Builder bufComments(String bufComments) {
+            this.bufComments = bufComments;
             return this;
         }
 
@@ -190,6 +211,22 @@ public class Book {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getBufComments() {
+        return bufComments;
+    }
+
+    public void setBufComments(String bufComments) {
+        this.bufComments = bufComments;
     }
 
     public double getBufRating() {

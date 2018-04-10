@@ -19,8 +19,11 @@ Copyright 2016 Google Inc.
 <div class="container">
   <h2>
       <c:out value="${book.title}" />
+<<<<<<< HEAD
       <small class="book-added-by">Added by
         ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')}</small>
+=======
+>>>>>>> florian
   </h2>
 
 
@@ -62,6 +65,13 @@ Copyright 2016 Google Inc.
           <i class="fas fa-trash-alt"></i>
           Delete
         </a>
+<<<<<<< HEAD
+=======
+        <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
+          <i class="fa fa-comment"></i>
+            Comments
+        </a>
+>>>>>>> florian
     </p>
       <%-- </div> --%>
 
@@ -69,13 +79,37 @@ Copyright 2016 Google Inc.
 
   <%-- <c:choose>
   <c:when test="${empty comments}"> --%>
+
+  <div  style="margin-top: 1em; width: 100%;" class="container">
+
+  <%-- <c:choose>
+  <c:when test="${empty listComments}">
   <p>No comments found</p>
-  <%-- </c:when>
-  <c:otherwise>
-  <c:forEach items="${comments}" var="comment">
-  <p>${fn:escapeXml(comment.message)}</p>
-  <p>${fn:escapeXml(comment.rating)}</p>
-  </c:forEach> --%>
+  </c:when>
+  <c:otherwise>--%>
+      <div class="card">
+      <div class="card-header">
+        Comments:
+      </div>
+
+      <c:forEach items="${listComments}" var="comment">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">${fn:escapeXml(comment)}</li>
+          </ul>
+      </c:forEach>
+
+      </div>
+
+  <%-- <c:if test="${not empty cursor}">
+  <nav>
+    <ul class="pager">
+      <li><a href="?cursor=${fn:escapeXml(cursor)}">More</a></li>
+    </ul>
+  </nav>
+  </c:if> --%>
+<%--
+  </c:otherwise>
+  </c:choose> --%>
 
 </div>
 <!-- [END view] -->

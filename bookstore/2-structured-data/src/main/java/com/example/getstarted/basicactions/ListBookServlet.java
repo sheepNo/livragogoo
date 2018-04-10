@@ -16,13 +16,11 @@
 package com.example.getstarted.basicactions;
 
 import com.example.getstarted.daos.BookDao;
-import com.example.getstarted.daos.CloudSqlDao;
 import com.example.getstarted.daos.DatastoreDao;
 import com.example.getstarted.objects.Book;
 import com.example.getstarted.objects.Result;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,7 +36,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ListBookServlet extends HttpServlet {
 
   @Override
-  public void init() throws ServletException {
+  public void init(){
     BookDao dao = null;
 
     // Creates the DAO based on the Context Parameters
@@ -46,17 +44,6 @@ public class ListBookServlet extends HttpServlet {
     switch (storageType) {
       case "datastore":
         dao = new DatastoreDao();
-        break;
-      case "cloudsql":
-        try {
-          String connect = this.getServletContext().getInitParameter("sql.urlRemote");
-          if (connect.contains("localhost")) {
-            connect = this.getServletContext().getInitParameter("sql.urlLocal");
-          }
-          dao = new CloudSqlDao(connect);
-        } catch (SQLException e) {
-          throw new ServletException("SQL error", e);
-        }
         break;
       default:
         throw new IllegalStateException(

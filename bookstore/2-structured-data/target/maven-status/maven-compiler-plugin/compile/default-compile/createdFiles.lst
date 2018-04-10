@@ -1,4 +1,5 @@
 com/example/getstarted/basicactions/DeleteBookServlet.class
+com/example/getstarted/basicactions/CommentsBookServlet.class
 com/example/getstarted/objects/Book$Builder.class
 com/example/getstarted/objects/Result.class
 com/example/getstarted/basicactions/UpdateBookServlet.class
@@ -7,7 +8,6 @@ com/example/getstarted/util/DatastoreSessionFilter.class
 com/example/getstarted/objects/Book$1.class
 com/example/getstarted/daos/BookDao.class
 com/example/getstarted/objects/Book.class
-com/example/getstarted/daos/CloudSqlDao.class
 com/example/getstarted/basicactions/HealthServlet.class
 com/example/getstarted/basicactions/ReadBookServlet.class
 com/example/getstarted/basicactions/ListBookServlet.class

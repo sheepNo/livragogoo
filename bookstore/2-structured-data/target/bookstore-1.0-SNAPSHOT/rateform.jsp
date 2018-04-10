@@ -18,7 +18,11 @@ Copyright 2016 Google Inc.
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="container">
   <h3>
+<<<<<<< HEAD
     <c:out value="${action} ${book.title}" />
+=======
+    <c:out value="${action}: ${book.title}" />
+>>>>>>> florian
   </h3>
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
@@ -32,6 +36,11 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="numberVotes" id="numberVotes" value="${fn:escapeXml(book.numberVotes)}" />
     <textarea style="display:none;" name="description" id="description">${fn:escapeXml(book.description)}</textarea>
     <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
+<<<<<<< HEAD
+=======
+    <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
+    <input type="hidden" type="text" name="bufComments" id="bufComments" value="${fn:escapeXml(book.bufComments)}" />
+>>>>>>> florian
 
     <%-- <div class="form-group">
       <label for="bufRating">Rating</label>
@@ -39,6 +48,10 @@ Copyright 2016 Google Inc.
     </div> --%>
 
     <select name="bufRating" id="bufRating" class="custom-select custom-select-lg">
+<<<<<<< HEAD
+=======
+      <option value="0">0</option>
+>>>>>>> florian
       <option value="20">1</option>
       <option value="40">2</option>
       <option value="60" selected>3</option>
