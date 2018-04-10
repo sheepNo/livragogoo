@@ -4,12 +4,17 @@ based on google cloud tutorial
 
 # TODO
 
-edit pom.xml
-rate.jsp
-RateBookSerlet
-(garder tous les votes et faire une moyenne, ou alors garder la moyenne et le nombre de votes - on peut calculer la moyenne à partir de ça et une nouvelle note.)
+edit pom.xml DONE
+rate.jsp DONE
+RateBookSerlet DONE
+(garder tous les votes et faire une moyenne, ou alors garder la moyenne et le nombre de votes - on peut calculer la moyenne à partir de ça et une nouvelle note.) DONE
+comments DONE
 
-login
+top 3
 
-ajouter à son panier
-acheter
+login 
+faire un utilisateur admin pour voir les boutons supprimer
+
+ajouter à son panier / liste de souhait
+
+voir la liste des amis
