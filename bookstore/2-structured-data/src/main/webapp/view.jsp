@@ -41,13 +41,14 @@ Copyright 2016 Google Inc.
           Rate
       </a>
       <c:set var="doubleRating" value="${book.numberVotes}" />
-      <fmt:parseNumber var="intRating" integerOnly="true"
-                             type="number" value="${doubleRating}" />
+      <fmt:parseNumber var="intRating" integerOnly="true" type="number" value="${doubleRating}" />
+        <%-- <span class="badge badge-primary badge-pill">${intRating} votes</span> --%>
       (${intRating} votes)
   </p>
     <div style="max-width: 300px;" class="progress">
           <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
+
 
 <%--
       <div class="card" style="width: 100%;">
@@ -91,7 +92,7 @@ Copyright 2016 Google Inc.
 <div class="card bg-light mb-3" style="max-width: 100%">
     <div style="display: flex; justify-content: space-between;" class="card-header">
         <div>
-            Description:
+            Description
         </div>
         <div >
             <a href="/update?id=${book.id}" class="btn btn-primary btn-sm" role="button">
@@ -116,7 +117,8 @@ Copyright 2016 Google Inc.
       <div class="card">
       <div  style="display: flex; justify-content: space-between;" class="card-header" class="card-header">
           <div>
-              Comments:
+              Comments
+              <span class="badge badge-primary badge-pill">14</span>
           </div>
           <div>
             <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
