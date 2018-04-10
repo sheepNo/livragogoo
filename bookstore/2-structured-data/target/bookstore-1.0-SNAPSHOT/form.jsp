@@ -41,14 +41,9 @@ Copyright 2016 Google Inc.
       <input type="text" name="publishedDate" id="publishedDate" value="${fn:escapeXml(book.publishedDate)}" class="form-control" />
     </div>
 
-<<<<<<< HEAD
-
-      <input type="hidden" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
-=======
     <input type="hidden" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" class="form-control" />
 
     <input type="hidden" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" class="form-control" />
->>>>>>> florian
 
     <div class="form-group">
       <label for="description">Description</label>

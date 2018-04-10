@@ -53,7 +53,7 @@ Copyright 2016 Google Inc.
 
 
       <%-- <div style="margin-bottom:2.5em" class="btn-group"> --%>
-      <p>
+    <p>
         <a href="/update?id=${book.id}" class="btn btn-primary btn-sm" role="button">
             <i class="fa fa-edit"></i>
          Edit
@@ -61,10 +61,6 @@ Copyright 2016 Google Inc.
         <a href="/delete?id=${book.id}" class="btn btn-danger btn-sm">
           <i class="fas fa-trash-alt"></i>
           Delete
-        </a>
-        <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
-          <i class="fa fa-comment"></i>
-            Comments
         </a>
     </p>
       <%-- </div> --%>
@@ -85,6 +81,12 @@ Copyright 2016 Google Inc.
       <div class="card-header">
         Comments:
       </div>
+          </ul>
+          <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
+              <i class="fa fa-comment"></i>
+              Comments
+          </a>
+          <ul class="list-group list-group-flush">
 
       <c:forEach items="${listComments}" var="comment">
           <ul class="list-group list-group-flush">

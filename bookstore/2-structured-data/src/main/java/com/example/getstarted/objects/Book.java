@@ -29,12 +29,8 @@ public class Book {
     private double rating;
     private double bufRating;
     private double numberVotes;
-<<<<<<< HEAD
-=======
     private String comments;
     private String bufComments;
-
->>>>>>> florian
 
     // [END book]
     // [START keys]

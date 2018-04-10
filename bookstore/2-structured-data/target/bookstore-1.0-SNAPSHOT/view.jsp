@@ -19,11 +19,8 @@ Copyright 2016 Google Inc.
 <div class="container">
   <h2>
       <c:out value="${book.title}" />
-<<<<<<< HEAD
-      <small class="book-added-by">Added by
-        ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')}</small>
-=======
->>>>>>> florian
+      <small class="book-added-by">(Added by
+        ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')})</small>
   </h2>
 
 
@@ -56,7 +53,7 @@ Copyright 2016 Google Inc.
 
 
       <%-- <div style="margin-bottom:2.5em" class="btn-group"> --%>
-      <p>
+    <p>
         <a href="/update?id=${book.id}" class="btn btn-primary btn-sm" role="button">
             <i class="fa fa-edit"></i>
          Edit
@@ -65,13 +62,6 @@ Copyright 2016 Google Inc.
           <i class="fas fa-trash-alt"></i>
           Delete
         </a>
-<<<<<<< HEAD
-=======
-        <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
-          <i class="fa fa-comment"></i>
-            Comments
-        </a>
->>>>>>> florian
     </p>
       <%-- </div> --%>
 
@@ -91,6 +81,12 @@ Copyright 2016 Google Inc.
       <div class="card-header">
         Comments:
       </div>
+          </ul>
+          <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
+              <i class="fa fa-comment"></i>
+              Comments
+          </a>
+          <ul class="list-group list-group-flush">
 
       <c:forEach items="${listComments}" var="comment">
           <ul class="list-group list-group-flush">
