@@ -18,7 +18,7 @@ Copyright 2016 Google Inc.
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="container">
   <h3>
-    <c:out value="${action} ${book.title}" />
+    <c:out value="${action}: ${book.title}" />
   </h3>
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
@@ -41,6 +41,7 @@ Copyright 2016 Google Inc.
     </div> --%>
 
     <select name="bufRating" id="bufRating" class="custom-select custom-select-lg">
+      <option value="0">0</option>
       <option value="20">1</option>
       <option value="40">2</option>
       <option value="60" selected>3</option>

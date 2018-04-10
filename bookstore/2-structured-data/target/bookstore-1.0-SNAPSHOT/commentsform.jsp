@@ -18,7 +18,7 @@ Copyright 2016 Google Inc.
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="container">
   <h3>
-    <c:out value="${action} ${book.title}" />
+    <c:out value="${action}: ${book.title}" />
   </h3>
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
@@ -35,10 +35,9 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="bufRating" id="bufRating" value="${fn:escapeXml(book.bufRating)}" />
     <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
 
-
     <div class="form-group">
       <label for="bufComments">Comments</label>
-      <input type="text" name="bufComments" id="bufComments" placeholder="Enter your comments here" class="form-control" />
+      <textarea name="bufComments" id="bufComments" class="form-control">${fn:escapeXml(book.bufComments)}</textarea>
     </div>
 
     <button type="submit" class="btn btn-success">

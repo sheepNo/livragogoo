@@ -63,7 +63,7 @@ Copyright 2016 Google Inc.
           Delete
         </a>
         <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
-          <i class="fa fa-pen"></i>
+          <i class="fa fa-comment"></i>
             Comments
         </a>
     </p>
