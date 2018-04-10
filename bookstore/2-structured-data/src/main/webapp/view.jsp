@@ -19,8 +19,8 @@ Copyright 2016 Google Inc.
 <div class="container">
   <h2>
       <c:out value="${book.title}" />
-      <small class="book-added-by">Added by
-        ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')}</small>
+      <small class="book-added-by">(Added by
+        ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')})</small>
   </h2>
 
 
