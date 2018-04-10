@@ -43,10 +43,16 @@ Copyright 2016 Google Inc.
             <%-- <div class="progress">
                 <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
             </div> --%>
-            <div style="display: flex-direction: row; margin-top: 0.1em">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash-alt"></i>
-            </div>
+            <%-- <div style="display: flex-direction: row; margin-top: 0.1em;" > --%>
+                <div style="display: flex-direction: row; margin-top: 0.1em;" class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" href="/update?id=${book.id}" class="btn btn-light" role="button">
+                    <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" href="/delete?id=${book.id}" class="btn btn-light">
+                    <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            <%-- </div> --%>
         </div>
       </div>
 
