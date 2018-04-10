@@ -73,7 +73,7 @@ Copyright 2016 Google Inc.
 
   <%-- <c:choose>
   <c:when test="${empty comments}"> --%>
-  <p>No comments found</p>
+  <p>${fn:escapeXml(book.comments)}</p>
   <%-- </c:when>
   <c:otherwise>
   <c:forEach items="${comments}" var="comment">

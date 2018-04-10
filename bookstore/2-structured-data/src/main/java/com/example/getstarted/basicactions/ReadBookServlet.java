@@ -40,10 +40,16 @@ public class ReadBookServlet extends HttpServlet {
       Book book = dao.readBook(id);
       req.setAttribute("book", book);
       req.setAttribute("page", "view");
+      req.setAttribute("listComments", ReadBookServlet.ParseComments(book));
       req.getRequestDispatcher("/base.jsp").forward(req, resp);
     } catch (Exception e) {
       throw new ServletException("Error reading book", e);
     }
+  }
+
+  public static String[] ParseComments(Book book){
+      String[] listComments = book.getComments().split("%µ");
+      return listComments;
   }
 }
 // [END example]
