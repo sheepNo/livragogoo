@@ -135,7 +135,7 @@ public class DatastoreDao implements BookDao {
         .set(Book.RATING, book.getRating())
         // .set(Book.BUFRATING, book.getBufRating())
         .set(Book.NBVOTES, book.getNumberVotes())
-        .set(Book.COMMENTS, book.getBufComments() + "/$" + book.getComments())
+        .set(Book.COMMENTS, book.getBufComments() + "%µ" + book.getComments())
         // .set(Book.BUFCOMMENTS, book.getBufComments())
         .build();
     datastore.update(entity);                   // Update the Entity

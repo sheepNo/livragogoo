@@ -36,7 +36,7 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
 
     <div class="form-group">
-      <label for="bufComments">Comments</label>
+      <label for="bufComments"></label>
       <textarea name="bufComments" id="bufComments" class="form-control">${fn:escapeXml(book.bufComments)}</textarea>
     </div>
 

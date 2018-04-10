@@ -74,14 +74,14 @@ Copyright 2016 Google Inc.
   <%-- <c:choose>
   <c:when test="${empty comments}"> --%>
 
-  <div class="container">
+  <div  style="margin-top: 1em; width: 100%;" class="container">
 
-  <c:choose>
+  <%-- <c:choose>
   <c:when test="${empty listComments}">
   <p>No comments found</p>
   </c:when>
-  <c:otherwise>
-      <div class="card" style="width: 18rem;">
+  <c:otherwise>--%>
+      <div class="card">
       <div class="card-header">
         Comments:
       </div>
@@ -101,9 +101,9 @@ Copyright 2016 Google Inc.
     </ul>
   </nav>
   </c:if> --%>
-  
+<%--
   </c:otherwise>
-  </c:choose>
+  </c:choose> --%>
 
 </div>
 <!-- [END view] -->
