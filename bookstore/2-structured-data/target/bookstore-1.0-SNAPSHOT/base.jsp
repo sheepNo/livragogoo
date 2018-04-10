@@ -32,8 +32,9 @@ Copyright 2016 Google Inc.
         <div class="navbar-header">
           <div class="navbar-brand">Livragogoo</div>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="/">Available books</a></li>
+        <ul class="nav navbar-nav flex-row">
+            <li><a class="btn btn-light" href="/">Available books</a></li>
+          <li><a class="btn btn-light" href="/">To be added</a></li>
 	  <c:if test="${isAuthConfigured}"><li><a href="/books/mine">My Books</a></li></c:if>
         </ul>
         <p class="navbar-text navbar-right">
