@@ -19,14 +19,14 @@ Copyright 2016 Google Inc.
 <div class="container">
   <h2>
       <c:out value="${book.title}" />
+      <small class="book-added-by">Added by
+        ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')}</small>
   </h2>
 
 
   <div style="margin-bottom: 0.5em" class="media">
     <div style="margin-right: 1em" class="media-left">
       <img class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/256/192')}">
-          <small class="book-added-by">Added by
-            ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')}</small>
     </div>
     <div class="media-body">
       <h3 class="book-title">
