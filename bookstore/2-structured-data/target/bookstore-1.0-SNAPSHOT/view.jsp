@@ -118,7 +118,7 @@ Copyright 2016 Google Inc.
       <div  style="display: flex; justify-content: space-between;" class="card-header" class="card-header">
           <div>
               Comments
-              <span class="badge badge-primary badge-pill">14</span>
+              <span class="badge badge-primary badge-pill">${numberComments}</span>
           </div>
           <div>
             <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
