@@ -39,17 +39,20 @@ Copyright 2016 Google Inc.
         <i class="fa fa-star"></i>
           Rate
       </a>
-      (${fn:escapeXml(book.numberVotes)} votes)
+      (${book.numberVotes} votes)
     </p>
       <%-- <p>rating: --%>
     <div class="progress">
-          <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
+          <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
      <%-- </p> --%>
-
-      <p class="book-description">${fn:escapeXml(book.description)}</p>
     </div>
 </div>
+
+<p style="word-wrap: break-word;
+   width: 100%;" class="book-description">
+    Description: ${fn:escapeXml(book.description)}
+</p>
 
 
       <%-- <div style="margin-bottom:2.5em" class="btn-group"> --%>
@@ -70,7 +73,7 @@ Copyright 2016 Google Inc.
   <%-- <c:choose>
   <c:when test="${empty comments}"> --%>
 
-  <div  style="margin-top: 1em; width: 100%;" class="container">
+  <div  style="margin-top: 1em; width: 100%;">
 
   <%-- <c:choose>
   <c:when test="${empty listComments}">
@@ -84,7 +87,7 @@ Copyright 2016 Google Inc.
           </ul>
           <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
               <i class="fa fa-comment"></i>
-              Comments
+              Add a comment!
           </a>
           <ul class="list-group list-group-flush">
 
@@ -107,5 +110,6 @@ Copyright 2016 Google Inc.
   </c:otherwise>
   </c:choose> --%>
 
+</div>
 </div>
 <!-- [END view] -->

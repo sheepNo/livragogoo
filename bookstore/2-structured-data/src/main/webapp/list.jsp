@@ -22,24 +22,33 @@ Copyright 2016 Google Inc.
     <i class="fas fa-plus"></i>
     Add book
   </a>
+  <div style="display: flex; flex-wrap: wrap;">
   <c:choose>
   <c:when test="${empty books}">
   <p>No books found</p>
   </c:when>
   <c:otherwise>
   <c:forEach items="${books}" var="book">
-  <div class="media">
-    <a href="/read?id=${book.id}">
-      <div class="media-left">
-        <img alt="ahhh" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}">
+
+      <div class="card" style="width: 20%; margin:1em;">
+
+          <%-- <div class="card-header">Header</div> --%>
+
+        <a href="/read?id=${book.id}">
+            <img class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
+        </a>
+
+        <div class="card-body">
+          <%-- <p class="card-text"> --%>
+              ${fn:escapeXml(not empty book.title?book.title:'Unknown')}
+              <small>by ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</small>
+              <div class="progress">
+                    <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+          <%-- </p> --%>
+        </div>
       </div>
-      <div class="media-body">
-        <h4>${fn:escapeXml(book.title)}</h4>
-        <p>${fn:escapeXml(book.author)}</p>
-        <p>${fn:escapeXml(book.rating)}</p>
-      </div>
-    </a>
-  </div>
+
   </c:forEach>
   <c:if test="${not empty cursor}">
   <nav>
@@ -51,4 +60,7 @@ Copyright 2016 Google Inc.
   </c:otherwise>
   </c:choose>
 </div>
+</div>
+
+
 <!-- [END list] -->
