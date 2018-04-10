@@ -56,10 +56,14 @@ Copyright 2016 Google Inc.
     </div>
 
 
-    <button type="submit" class="btn btn-success">Save</button>
+    <button type="submit" class="btn btn-success">
+        <i class="fas fa-check"></i>
+        Save
+    </button>
 
     <a href="/" class="btn btn-danger">
         <i class="fas fa-times"></i>
+        Cancel
     </a>
   </form>
 </div>

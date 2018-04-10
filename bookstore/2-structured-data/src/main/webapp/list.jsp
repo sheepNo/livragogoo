@@ -17,11 +17,17 @@ Copyright 2016 Google Inc.
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="container">
-  <h3>Books</h3>
+<div style="display:flex; justify-content: space-between">
+  <div>
+      <h3>Books</h3>
+  </div>
+  <div>
   <a href="/create" class="btn btn-success btn-sm">
     <i class="fas fa-plus"></i>
     Add book
-  </a>
+</a>
+</div>
+</div>
   <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly">
   <c:choose>
   <c:when test="${empty books}">
@@ -30,7 +36,7 @@ Copyright 2016 Google Inc.
   <c:otherwise>
   <c:forEach items="${books}" var="book">
 
-      <div class="card" style="width: 40%; max-width: 300px; margin:1em;">
+      <div class="card" style="width: 40%; max-width: 240px; margin:1em;">
         <a href="/read?id=${book.id}">
             <img  class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
         </a>
@@ -45,12 +51,12 @@ Copyright 2016 Google Inc.
             </div> --%>
             <%-- <div style="display: flex-direction: row; margin-top: 0.1em;" > --%>
                 <div style="display: flex-direction: row; margin-top: 0.1em;" class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" href="/update?id=${book.id}" class="btn btn-light" role="button">
+                    <a href="/update?id=${book.id}" class="btn btn-light" role="button">
                     <i class="fas fa-edit"></i>
-                    </button>
-                    <button type="button" href="/delete?id=${book.id}" class="btn btn-light">
+                    </a>
+                    <a href="/delete?id=${book.id}" class="btn btn-light">
                     <i class="fas fa-trash-alt"></i>
-                    </button>
+                    </a>
                 </div>
             <%-- </div> --%>
         </div>
