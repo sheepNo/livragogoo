@@ -27,7 +27,7 @@ Copyright 2016 Google Inc.
 <%-- https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css --%>
   </head>
   <body>
-    <div class="navbar nav-pills">
+    <div style="margin-bottom: 1em" class="navbar nav-tabs">
       <div class="container">
         <div class="navbar-header">
           <div class="navbar-brand">Livragogoo</div>

@@ -47,7 +47,7 @@ public class DatastoreDao implements BookDao {
   // [END constructor]
   // [START entityToBook]
   public Book entityToBook(Entity entity) {
-    return new Book.Builder()                                     // Convert to Book form
+    return new Book.Builder() // Convert to Book form
         .author(entity.getString(Book.AUTHOR))
         .description(entity.getString(Book.DESCRIPTION))
         .id(entity.getKey().getId())
@@ -61,9 +61,9 @@ public class DatastoreDao implements BookDao {
   // [START create]
   @Override
   public Long createBook(Book book) {
-    IncompleteKey key = keyFactory.newKey();          // Key will be assigned once written
-    FullEntity<IncompleteKey> incBookEntity = Entity.newBuilder(key)  // Create the Entity
-        .set(Book.AUTHOR, book.getAuthor())           // Add Property ("author", book.getAuthor())
+    IncompleteKey key = keyFactory.newKey(); // Key will be assigned once written
+    FullEntity<IncompleteKey> incBookEntity = Entity.newBuilder(key) // Create the Entity
+        .set(Book.AUTHOR, book.getAuthor()) // Add Property ("author", book.getAuthor())
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
         .set(Book.TITLE, book.getTitle())
@@ -71,7 +71,7 @@ public class DatastoreDao implements BookDao {
         .set(Book.NBVOTES, book.getNumberVotes())
         .build();
     Entity bookEntity = datastore.add(incBookEntity); // Save the Entity
-    return bookEntity.getKey().getId();                     // The ID of the Key
+    return bookEntity.getKey().getId(); // The ID of the Key
   }
   // [END create]
   // [START read]
@@ -85,7 +85,7 @@ public class DatastoreDao implements BookDao {
   @Override
   public void updateBook(Book book) {
     Key key = keyFactory.newKey(book.getId());  // From a book, create a Key
-    Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
+    Entity entity = Entity.newBuilder(key) // Convert Book to an Entity
         .set(Book.AUTHOR, book.getAuthor())
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
@@ -93,14 +93,14 @@ public class DatastoreDao implements BookDao {
         .set(Book.RATING, book.getRating())
         .set(Book.NBVOTES, book.getNumberVotes())
         .build();
-    datastore.update(entity);                   // Update the Entity
+    datastore.update(entity); // Update the Entity
   }
   // [END update]
   // [START rate]
   @Override
   public void rateBook(Book book) {
     Key key = keyFactory.newKey(book.getId());  // From a book, create a Key
-    Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
+    Entity entity = Entity.newBuilder(key) // Convert Book to an Entity
         .set(Book.AUTHOR, book.getAuthor())
         .set(Book.DESCRIPTION, book.getDescription())
         .set(Book.PUBLISHED_DATE, book.getPublishedDate())
@@ -110,21 +110,21 @@ public class DatastoreDao implements BookDao {
         // .set(Book.BUFRATING, book.getBufRating())
         .set(Book.NBVOTES, book.getNumberVotes()+1)
         .build();
-    datastore.update(entity);                   // Update the Entity
+    datastore.update(entity); // Update the Entity
   }
   // [END rate]
   // [START delete]
   @Override
   public void deleteBook(Long bookId) {
-    Key key = keyFactory.newKey(bookId);        // Create the Key
-    datastore.delete(key);                      // Delete the Entity
+    Key key = keyFactory.newKey(bookId); // Create the Key
+    datastore.delete(key); // Delete the Entity
   }
   // [END delete]
   // [START entitiesToBooks]
   public List<Book> entitiesToBooks(QueryResults<Entity> resultList) {
     List<Book> resultBooks = new ArrayList<>();
     while (resultList.hasNext()) {  // We still have data
-      resultBooks.add(entityToBook(resultList.next()));      // Add the Book to the List
+      resultBooks.add(entityToBook(resultList.next()));// Add the Book to the List
     }
     return resultBooks;
   }
