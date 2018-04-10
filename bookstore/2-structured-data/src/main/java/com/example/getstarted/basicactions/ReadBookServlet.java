@@ -38,9 +38,11 @@ public class ReadBookServlet extends HttpServlet {
     BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
     try {
       Book book = dao.readBook(id);
+      String[] listComments = ParseComments(book);
       req.setAttribute("book", book);
       req.setAttribute("page", "view");
-      req.setAttribute("listComments", ReadBookServlet.ParseComments(book));
+      req.setAttribute("listComments", listComments);
+      req.setAttribute("numberComments", listComments.length);
       req.getRequestDispatcher("/base.jsp").forward(req, resp);
     } catch (Exception e) {
       throw new ServletException("Error reading book", e);

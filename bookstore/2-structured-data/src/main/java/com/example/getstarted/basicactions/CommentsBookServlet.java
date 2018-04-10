@@ -47,7 +47,7 @@ public class CommentsBookServlet extends HttpServlet {
             .imageUrl(req.getParameter("imageUrl"))
             .id(Long.decode(req.getParameter("id")))
             .rating(Double.parseDouble(req.getParameter("rating")))
-            .bufRating(Double.parseDouble(req.getParameter("bufRating")))
+            //.bufRating(Double.parseDouble(req.getParameter("bufRating")))
             .numberVotes(Double.parseDouble(req.getParameter("numberVotes")))
             .comments(req.getParameter("comments"))
             .bufComments(req.getParameter("bufComments"))
