@@ -19,6 +19,8 @@ import com.example.getstarted.daos.BookDao;
 import com.example.getstarted.objects.Book;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,19 +40,25 @@ public class ReadBookServlet extends HttpServlet {
     BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
     try {
       Book book = dao.readBook(id);
-      String[] listComments = ParseComments(book);
+      List<String> listComments = ParseComments(book);
       req.setAttribute("book", book);
       req.setAttribute("page", "view");
       req.setAttribute("listComments", listComments);
-      req.setAttribute("numberComments", listComments.length);
+      req.setAttribute("numberComments", listComments.size());
       req.getRequestDispatcher("/base.jsp").forward(req, resp);
     } catch (Exception e) {
       throw new ServletException("Error reading book", e);
     }
   }
 
-  public static String[] ParseComments(Book book){
-      String[] listComments = book.getComments().split("%µ");
+  public static List<String> ParseComments(Book book){
+      String[] comments = book.getComments().split("%µ");
+      List<String> listComments = new LinkedList<String> ();
+      for (String string: comments){
+          if (!string.equals("")){
+              listComments.add(string);
+          }
+      }
       return listComments;
   }
 }

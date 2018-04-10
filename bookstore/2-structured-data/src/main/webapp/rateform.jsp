@@ -57,9 +57,11 @@ Copyright 2016 Google Inc.
     <div style="margin-left: 0.5em; margin-right: 0.5em">
     <button type="submit" class="btn btn-success">
         <i class="fas fa-check"></i>
+        Save
     </button>
     <a href="/read?id=${book.id}" class="btn btn-danger">
         <i class="fas fa-times"></i>
+        Cancel
     </a>
     </div>
     </div>

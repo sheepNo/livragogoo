@@ -32,7 +32,6 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="numberVotes" id="numberVotes" value="${fn:escapeXml(book.numberVotes)}" />
     <textarea style="display:none;" name="description" id="description">${fn:escapeXml(book.description)}</textarea>
     <input type="hidden" type="text" name="rating" id="rating" value="${fn:escapeXml(book.rating)}" />
-    <input type="hidden" type="text" name="bufRating" id="bufRating" value="${fn:escapeXml(book.bufRating)}" />
     <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
     <input type="hidden" type="text" name="imageUrl" id="imageUrl" value="${fn:escapeXml(book.imageUrl)}" />
 
@@ -43,10 +42,12 @@ Copyright 2016 Google Inc.
 
     <button type="submit" class="btn btn-success">
         <i class="fas fa-check"></i>
+        Save
     </button>
 
     <a href="/read?id=${book.id}" class="btn btn-danger">
         <i class="fas fa-times"></i>
+        Cancel
     </a>
 
   </form>
