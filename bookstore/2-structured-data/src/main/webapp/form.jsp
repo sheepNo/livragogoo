@@ -57,6 +57,10 @@ Copyright 2016 Google Inc.
 
 
     <button type="submit" class="btn btn-success">Save</button>
+
+    <a href="/" class="btn btn-danger">
+        <i class="fas fa-times"></i>
+    </a>
   </form>
 </div>
 <!-- [END form] -->

@@ -22,7 +22,7 @@ Copyright 2016 Google Inc.
     <i class="fas fa-plus"></i>
     Add book
   </a>
-  <div style="display: flex; flex-wrap: wrap;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly">
   <c:choose>
   <c:when test="${empty books}">
   <p>No books found</p>
@@ -30,7 +30,7 @@ Copyright 2016 Google Inc.
   <c:otherwise>
   <c:forEach items="${books}" var="book">
 
-      <div class="card" style="width: 25%; margin:1em;">
+      <div class="card" style="width: 40%; max-width: 300px; margin:1em;">
         <a href="/read?id=${book.id}">
             <img  class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
         </a>
