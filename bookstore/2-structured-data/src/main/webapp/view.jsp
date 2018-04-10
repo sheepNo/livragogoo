@@ -23,7 +23,7 @@ Copyright 2016 Google Inc.
 
   <div style="margin-bottom: 0.5em" class="media">
     <div style="margin-right: 1em" class="media-left">
-      <img style="max-width:250px" class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/256/192')}">
+      <img style="max-height:400px" class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/256/192')}">
     </div>
     <div class="media-body">
       <h3 class="book-title">

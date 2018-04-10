@@ -32,15 +32,21 @@ Copyright 2016 Google Inc.
 
       <div class="card" style="width: 25%; margin:1em;">
         <a href="/read?id=${book.id}">
-            <img style="max-width:200px" class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
+            <img  class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
         </a>
 
-        <div class="card-body">
-            <h5>${fn:escapeXml(not empty book.title?book.title:'Unknown')}</h5>
-            <small>by ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</small>
+        <div style="display: flex; justify-content: space-between; flex-direction: column;" class="card-body">
+            <div>
+                <h5>${fn:escapeXml(not empty book.title?book.title:'Unknown')}</h5>
+                <small>by ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</small>
+            </div>
             <%-- <div class="progress">
                 <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
             </div> --%>
+            <div style="display: flex-direction: row; margin-top: 0.1em">
+                <i class="fas fa-edit"></i>
+                <i class="fas fa-trash-alt"></i>
+            </div>
         </div>
       </div>
 
