@@ -21,9 +21,9 @@ Copyright 2016 Google Inc.
 
 <div class="container">
 
-  <div style="margin-bottom: 0.5em" class="media">
-    <div style="margin-right: 1em" class="media-left">
-      <img style="max-height:400px" class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/256/192')}">
+  <div style="margin-bottom: 2em" class="media">
+    <div style="margin-right: 2em" class="media-left">
+      <img style="max-height:400px" class="book-image" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}">
     </div>
     <div class="media-body">
       <h3 class="book-title">
@@ -113,7 +113,7 @@ Copyright 2016 Google Inc.
     </div>
 </div>
 
-  <div  style="margin-top: 1em; width: 100%;">
+  <div  style="margin-top: 1em; margin-bottom: 4em; width: 100%;">
       <div class="card">
       <div  style="display: flex; justify-content: space-between;" class="card-header" class="card-header">
           <div>

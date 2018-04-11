@@ -17,5 +17,6 @@ com/example/getstarted/objects/Book.class
 com/example/getstarted/basicactions/HealthServlet.class
 com/example/getstarted/basicactions/ReadBookServlet.class
 com/example/getstarted/basicactions/ListBookServlet.class
+com/example/getstarted/basicactions/TopBooksServlet.class
 com/example/getstarted/basicactions/RateBookServlet.class
 com/example/getstarted/daos/DatastoreDao.class

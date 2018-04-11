@@ -1,18 +1,3 @@
-/* Copyright 2016 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.getstarted.basicactions;
 
 import com.example.getstarted.daos.BookDao;
@@ -25,6 +10,7 @@ import java.util.List;
 import java.util.Collections;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,9 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 
 // [START example]
 // a url pattern of "" makes this servlet the root servlet
-@WebServlet(name = "list", urlPatterns = {"", "/books"}, loadOnStartup = 1)
 @SuppressWarnings("serial")
-public class ListBookServlet extends HttpServlet {
+@MultipartConfig
+@WebServlet(name = "top", value = "/top")
+// @WebServlet(name = "top", urlPatterns = {"", "/top"}, loadOnStartup = 1)
+public class TopBooksServlet extends HttpServlet {
 
   @Override
   public void init(){
@@ -63,7 +51,7 @@ public class ListBookServlet extends HttpServlet {
     try {
       Result<Book> result = dao.listBooks(startCursor);
       books = result.result;
-      Collections.sort(books, (a,b) -> a.getTitle().compareTo(b.getTitle()));
+      Collections.sort(books, (a,b) -> a.getRating() < b.getRating() ? 1 : a.getRating() == b.getRating() ? 0 : -1);
       endCursor = result.cursor;
     } catch (Exception e) {
       throw new ServletException("Error listing books", e);
@@ -74,7 +62,7 @@ public class ListBookServlet extends HttpServlet {
       bookNames.append(book.getTitle() + " ");
     }
     req.setAttribute("cursor", endCursor);
-    req.setAttribute("page", "list");
+    req.setAttribute("page", "top");
     req.getRequestDispatcher("/base.jsp").forward(req, resp);
   }
 }

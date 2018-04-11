@@ -34,14 +34,14 @@ Copyright 2016 Google Inc.
         </div>
         <ul class="nav">
             <li class="nav-item"><a class="nav-link btn btn-light" href="/">Available books</a></li>
-          <li class="nav-item"><a class="nav-link btn btn-light" href="/">Top 3</a></li>
+          <li class="nav-item"><a class="nav-link btn btn-light" href="/top">Top books</a></li>
 	  <c:if test="${isAuthConfigured}"><li><a href="/books/mine">My Books</a></li></c:if>
         </ul>
         <p class="nav navbar-right"> <!--  -nav- navbar-text navbar-right -->
             <%-- <li> --%>
             <a class="nav-item nav-link btn btn-secondary" href="/">
-                <i class="fas fa-shopping-cart"></i>
-                My shopping cart
+                <i class="fas fa-book"></i>
+                My list
             </a>
             <%-- </li> --%>
 
