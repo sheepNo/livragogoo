@@ -10,7 +10,7 @@ echo ""
 #   firefox http://localhost:8080 &
 
 # Pour déployer sur le cloud:
-#   mvn appengine:deploy -DprojectID=livragogoo &
+#   mvn appengine:deploy -DprojectID=livragogoo
 
 # Pour visualiser l'app:
 #   firefox https://livragogoo.appspot-preview.com &

@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
             req.setAttribute("page", "loginform");
             req.getRequestDispatcher("/base.jsp").forward(req, resp);
         } catch (Exception e) {
-            throw new ServletException("Error login", e);
+            throw new ServletException("Error to login", e);
         }
     }
 
