@@ -38,8 +38,8 @@ Copyright 2016 Google Inc.
 	  <c:if test="${isAuthConfigured}"><li><a href="/books/mine">My Books</a></li></c:if>
         </ul>
         <p class="nav navbar-right"> <!--  -nav- navbar-text navbar-right -->
-            <c:out value="logged in as ${currentSessionUser} !" />
             <c:if test="${not empty currentSessionUser}">
+            <c:out value="logged in as ${currentSessionUser} !" />
             <a class="nav-item nav-link btn btn-secondary" href="/logout">
                 <i class="fas fa-book"></i>
                 Logout

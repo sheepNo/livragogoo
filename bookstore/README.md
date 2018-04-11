@@ -17,7 +17,8 @@ newly added book
 
 ajouter à son panier / liste de souhait
 
-login 
-(faire un utilisateur admin pour voir les boutons supprimer)
+register DONE
+login DONE
+logout DONE
 
-voir la liste des amis (pas l'time)
+(faire un utilisateur admin pour voir les boutons supprimer)
