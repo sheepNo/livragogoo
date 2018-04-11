@@ -4,6 +4,7 @@ import com.example.getstarted.daos.UserDao;
 import com.example.getstarted.objects.User;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -27,8 +28,8 @@ public class LoginServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {
         UserDao dao = (UserDao) this.getServletContext().getAttribute("dao");
         try {
-            User user = dao.readUser(Long.decode(req.getParameter("id")));
-            req.setAttribute("user", user);
+            //User user = dao.readUser(Long.decode(req.getParameter("id")));
+            //req.setAttribute("user", user);
             req.setAttribute("action", "Login");
             req.setAttribute("destination", "login");
             req.setAttribute("page", "loginform");
@@ -43,14 +44,26 @@ public class LoginServlet extends HttpServlet {
     IOException {
         UserDao dao = (UserDao) this.getServletContext().getAttribute("dao");
         try {
-            // [START bookBuilder]
+            String userId = null;
+            String userName = req.getParameter("username");
+            List<User> listUsers = dao.listUsers();
+            for (User userStored: listUsers) {
+                if (userStored.getUserName().equals(userName)) {
+                    userId = userStored.getId().toString();
+                }
+            }
+            if (userId == null) {
+                /*for (User userStored: listUsers) {
+                    dao.deleteUser(userStored.getId());
+                }*/
+                throw new ServletException("You are not registered");
+            }
             User user = new User.Builder()
-            .id(Long.decode(req.getParameter("id")))
-            .userName(req.getParameter("username"))
+            .id(Long.decode(userId))
+            .userName(userName)
             .password(req.getParameter("password"))
             // .valid(Long.decode(req.getParameter("valid")))
             .build();
-            // [END bookBuilder]
             if (dao.login(user)) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("currentSessionUser", user);

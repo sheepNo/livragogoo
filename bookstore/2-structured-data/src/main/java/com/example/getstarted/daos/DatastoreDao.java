@@ -223,5 +223,30 @@ public class DatastoreDao implements BookDao, UserDao {
         return false;
     }
   }
+
+  public List<User> entitiesToUsers(QueryResults<Entity> resultList) {
+    List<User> resultUsers = new ArrayList<>();
+    while (resultList.hasNext()) {  // We still have data
+      resultUsers.add(entityToUser(resultList.next()));// Add the Book to the List
+    }
+    return resultUsers;
+  }
+
+  @Override
+  public List<User> listUsers() {
+        Query<Entity> query = Query.newEntityQueryBuilder()       // Build the Query
+            .setKind("Book2")
+            .setOrderBy(OrderBy.asc(User.USERNAME))
+            .build();
+        QueryResults<Entity> resultList = datastore.run(query);   // Run the query
+        List<User> resultUsers = entitiesToUsers(resultList);     // Retrieve
+        return resultUsers;
+    }
+
+    @Override
+    public void deleteUser(Long userId) {
+      Key key = keyFactory.newKey(userId); // Create the Key
+      datastore.delete(key); // Delete the Entity
+    }
 }
 // [END example]
