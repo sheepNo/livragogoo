@@ -51,7 +51,7 @@ public class ReadBookServlet extends HttpServlet {
     }
   }
 
-  public static List<String> ParseComments(Book book){
+  public List<String> ParseComments(Book book){
       String[] comments = book.getComments().split("%µ");
       List<String> listComments = new LinkedList<String> ();
       for (String string: comments){
