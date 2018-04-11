@@ -4,25 +4,25 @@ public class User {
     private Long id;
     private String userName;
     private String password;
-    public Long valid;
+    // public Long valid;
 
     public static final String ID = "id";
     public static final String USERNAME = "userName";
     public static final String PASSWORD = "password";
-    public static final String VALID = "valid";
+    // public static final String VALID = "valid";
 
     private User(Builder builder){
         this.id = builder.id;
         this.userName = builder.userName;
         this.password = builder.password;
-        this.valid = builder.valid;
+        // this.valid = builder.valid;
     }
 
     public static class Builder {
         private Long id;
         private String userName;
         private String password;
-        public Long valid;
+        // public Long valid;
 
         public Builder id(Long id) {
             this.id = id;
@@ -39,10 +39,10 @@ public class User {
             return this;
         }
 
-        public Builder valid(Long valid) {
-            this.valid = valid;
-            return this;
-        }
+        // public Builder valid(Long valid) {
+        //     this.valid = valid;
+        //     return this;
+        // }
 
         public User build() {
             return new User(this);
@@ -72,12 +72,12 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    public Long getValid() {
-        return valid;
-    }
-
-    public void setValid(Long valid) {
-        this.valid = valid;
-    }
+    // 
+    // public Long getValid() {
+    //     return valid;
+    // }
+    //
+    // public void setValid(Long valid) {
+    //     this.valid = valid;
+    // }
 }
