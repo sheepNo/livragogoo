@@ -224,26 +224,29 @@ public class DatastoreDao implements BookDao, UserDao {
     }
   }
 
-  @Override
-  public Result<User> listUsers(String startCursorString) {
-    /*Cursor startCursor = null;
-    if (startCursorString != null && !startCursorString.equals("")) {
-      startCursor = Cursor.fromUrlSafe(startCursorString);    // Where we left off
-  }*/
-    Query<Entity> query = Query.newEntityQueryBuilder()       // Build the Query
-        .setKind("Book2")                                     // We only care about Books
-        //.setStartCursor(startCursor)                          // Where we left off
-        .setOrderBy(OrderBy.asc(User.USERNAME))                  // Use default Index "title"
-        .build();
-    QueryResults<Entity> resultList = datastore.run(query);   // Run the query
-    List<User> resultUsers = entitiesToUsers(resultList);     // Retrieve and convert Entities
-    /*Cursor cursor = resultList.getCursorAfter();              // Where to start next time
-    if (cursor != null && resultBooks.size() == 10) {         // Are we paging? Save Cursor
-      String cursorString = cursor.toUrlSafe();               // Cursors are WebSafe
-      return new Result<>(resultBooks, cursorString);
-    } else {*/
-      return new Result<>(resultUsers);
+  public List<User> entitiesToUsers(QueryResults<Entity> resultList) {
+    List<User> resultUsers = new ArrayList<>();
+    while (resultList.hasNext()) {  // We still have data
+      resultUsers.add(entityToUser(resultList.next()));// Add the Book to the List
     }
- // }
-//}
+    return resultUsers;
+  }
+
+  @Override
+  public List<User> listUsers() {
+        Query<Entity> query = Query.newEntityQueryBuilder()       // Build the Query
+            .setKind("Book2")
+            .setOrderBy(OrderBy.asc(User.USERNAME))
+            .build();
+        QueryResults<Entity> resultList = datastore.run(query);   // Run the query
+        List<User> resultUsers = entitiesToUsers(resultList);     // Retrieve
+        return resultUsers;
+    }
+
+    @Override
+    public void deleteUser(Long userId) {
+      Key key = keyFactory.newKey(userId); // Create the Key
+      datastore.delete(key); // Delete the Entity
+    }
+}
 // [END example]
