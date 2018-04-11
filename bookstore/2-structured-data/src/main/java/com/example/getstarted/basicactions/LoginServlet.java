@@ -46,15 +46,16 @@ public class LoginServlet extends HttpServlet {
             // [START bookBuilder]
             User user = new User.Builder()
             .id(Long.decode(req.getParameter("id")))
-            .userName(req.getParameter("userName"))
+            .userName(req.getParameter("username"))
             .password(req.getParameter("password"))
-            .valid(Long.decode(req.getParameter("valid")))
+            // .valid(Long.decode(req.getParameter("valid")))
             .build();
             // [END bookBuilder]
             if (dao.login(user)) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("currentSessionUser", user);
-                resp.sendRedirect("/user?id=" + req.getParameter("id"));
+                // resp.sendRedirect("/user?id=" + req.getParameter("id"));
+                resp.sendRedirect("/");
             } else {
                 resp.sendRedirect("/invalidLogin");
             }

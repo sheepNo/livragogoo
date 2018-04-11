@@ -38,12 +38,28 @@ Copyright 2016 Google Inc.
 	  <c:if test="${isAuthConfigured}"><li><a href="/books/mine">My Books</a></li></c:if>
         </ul>
         <p class="nav navbar-right"> <!--  -nav- navbar-text navbar-right -->
-            <%-- <li> --%>
+            <c:if test="${not empty currentSessionUser}">
+            <c:out value="logged in as ${currentSessionUser} !" />
+            <a class="nav-item nav-link btn btn-secondary" href="/logout">
+                <i class="fas fa-book"></i>
+                Logout
+            </a>
             <a class="nav-item nav-link btn btn-secondary" href="/">
                 <i class="fas fa-book"></i>
                 My list
             </a>
-            <%-- </li> --%>
+            </c:if>
+
+            <c:if test="${empty currentSessionUser}">
+            <a class="nav-item nav-link btn btn-secondary" href="/register">
+                <i class="fas fa-book"></i>
+                Register
+            </a>
+            <a class="nav-item nav-link btn btn-secondary" href="/login">
+                <i class="fas fa-book"></i>
+                Login
+            </a>
+            </c:if>
 
           <c:choose>
           <c:when test="${not empty token}">

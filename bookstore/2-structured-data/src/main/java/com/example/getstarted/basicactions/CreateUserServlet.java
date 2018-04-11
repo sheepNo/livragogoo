@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 // [START annotations]
 @MultipartConfig
-@WebServlet(name = "createUser", urlPatterns = {"/createUser"})
+@WebServlet(name = "register", urlPatterns = {"/register"})
 // [END annotations]
 public class CreateUserServlet extends HttpServlet {
 
@@ -25,8 +25,8 @@ public class CreateUserServlet extends HttpServlet {
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
       IOException {
     req.setAttribute("action", "AddUser");          // Part of the Header in createUserform.jsp
-    req.setAttribute("destination", "createUser");  // The urlPattern to invoke (this Servlet)
-    req.setAttribute("page", "createUserform");           // Tells base.jsp to include createUserform.jsp
+    req.setAttribute("destination", "register");  // The urlPattern to invoke (this Servlet)
+    req.setAttribute("page", "registerform");           // Tells base.jsp to include createUserform.jsp
     req.getRequestDispatcher("/base.jsp").forward(req, resp);
   }
   // [END setup]
@@ -38,14 +38,15 @@ public class CreateUserServlet extends HttpServlet {
     UserDao dao = (UserDao) this.getServletContext().getAttribute("dao");
 // [START bookBuilder]
     User user = new User.Builder()
-        .userName(req.getParameter("userName"))
+        .userName(req.getParameter("username"))
         .password(req.getParameter("password"))
-        .valid(Long.decode(req.getParameter("valid")))
+        // .valid(Long.decode(req.getParameter("valid")))
         .build();
 // [END bookBuilder]
     try {
       Long id = dao.createUser(user);
-      resp.sendRedirect("/user?id=" + id.toString());   // read what we just wrote
+      // resp.sendRedirect("/user?id=" + id.toString());   // read what we just wrote
+      resp.sendRedirect("/");
     } catch (Exception e) {
       throw new ServletException("Error creating user", e);
     }

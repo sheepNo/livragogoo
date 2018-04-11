@@ -170,11 +170,11 @@ public class DatastoreDao implements BookDao, UserDao {
     if (startCursorString != null && !startCursorString.equals("")) {
       startCursor = Cursor.fromUrlSafe(startCursorString);    // Where we left off
     }
-    Query<Entity> query = Query.newEntityQueryBuilder()       // Build the Query
-        .setKind("Book2")                                     // We only care about Books
-        .setLimit(50)                                         // Only show 50 at a time
-        .setStartCursor(startCursor)                          // Where we left off
-        .setOrderBy(OrderBy.asc(Book.TITLE))                  // Use default Index "title"
+    Query<Entity> query = Query.newEntityQueryBuilder()// Build the Query
+        .setKind("Book2") // We only care about Books
+        .setLimit(50) // Only show 50 at a time
+        .setStartCursor(startCursor) // Where we left off
+        .setOrderBy(OrderBy.asc(Book.TITLE)) // Use default Index "title"
         .build();
     QueryResults<Entity> resultList = datastore.run(query);   // Run the query
     List<Book> resultBooks = entitiesToBooks(resultList);     // Retrieve and convert Entities
@@ -192,7 +192,7 @@ public class DatastoreDao implements BookDao, UserDao {
         .id(entity.getKey().getId())
         .userName(entity.getString(User.USERNAME))
         .password(entity.getString(User.PASSWORD))
-        .valid(entity.getLong(User.VALID))
+        // .valid(entity.getLong(User.VALID))
         .build();
   }
 
@@ -208,7 +208,7 @@ public class DatastoreDao implements BookDao, UserDao {
     FullEntity<IncompleteKey> incUserEntity = Entity.newBuilder(key) // Create the Entity
         .set(User.USERNAME, user.getUserName())
         .set(User.PASSWORD, user.getPassword())
-        .set(User.VALID, user.getValid())
+        // .set(User.VALID, user.getValid())
         .build();
     Entity userEntity = datastore.add(incUserEntity); // Save the Entity
     return userEntity.getKey().getId(); // The ID of the Key
