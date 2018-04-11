@@ -16,6 +16,7 @@
 package com.example.getstarted.daos;
 
 import com.example.getstarted.objects.Book;
+import com.example.getstarted.objects.User;
 import com.example.getstarted.objects.Result;
 
 import com.google.cloud.datastore.Cursor;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // [START example]
-public class DatastoreDao implements BookDao {
+public class DatastoreDao implements BookDao, UserDao {
 
   // [START constructor]
   private Datastore datastore;
@@ -186,5 +187,41 @@ public class DatastoreDao implements BookDao {
     }
   }
   // [END listbooks]
+  public User entityToUser(Entity entity) {
+    return new User.Builder()
+        .id(entity.getKey().getId())
+        .userName(entity.getString(User.USERNAME))
+        .password(entity.getString(User.PASSWORD))
+        .valid(entity.getLong(User.VALID))
+        .build();
+  }
+
+  @Override
+  public User readUser(Long userId) {
+    Entity userEntity = datastore.get(keyFactory.newKey(userId)); // Load an Entity for Key(id)
+    return entityToUser(userEntity);
+  }
+
+  @Override
+  public Long createUser(User user) {
+    IncompleteKey key = keyFactory.newKey(); // Key will be assigned once written
+    FullEntity<IncompleteKey> incUserEntity = Entity.newBuilder(key) // Create the Entity
+        .set(User.USERNAME, user.getUserName())
+        .set(User.PASSWORD, user.getPassword())
+        .set(User.VALID, user.getValid())
+        .build();
+    Entity userEntity = datastore.add(incUserEntity); // Save the Entity
+    return userEntity.getKey().getId(); // The ID of the Key
+  }
+
+  @Override
+  public boolean login(User user) {
+    User realUser = readUser(user.getId());
+    if (realUser.getUserName().equals(user.getUserName()) && realUser.getPassword().equals(user.getPassword())) {
+        return true;
+    } else {
+        return false;
+    }
+  }
 }
 // [END example]
