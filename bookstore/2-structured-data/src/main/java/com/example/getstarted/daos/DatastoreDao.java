@@ -171,7 +171,7 @@ public class DatastoreDao implements BookDao {
     }
     Query<Entity> query = Query.newEntityQueryBuilder()       // Build the Query
         .setKind("Book2")                                     // We only care about Books
-        .setLimit(10)                                         // Only show 10 at a time
+        .setLimit(50)                                         // Only show 50 at a time
         .setStartCursor(startCursor)                          // Where we left off
         .setOrderBy(OrderBy.asc(Book.TITLE))                  // Use default Index "title"
         .build();

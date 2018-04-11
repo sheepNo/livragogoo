@@ -46,10 +46,10 @@ Copyright 2016 Google Inc.
     <div>
     <select style="max-width:300px" name="bufRating" id="bufRating" class="custom-select custom-select-lg">
       <%-- <option value="0">0</option> --%>
-      <option value="20">1</option>
-      <option value="40">2</option>
-      <option value="60" selected>3</option>
-      <option value="80">4</option>
+      <option value="0">1</option>
+      <option value="25">2</option>
+      <option value="50" selected>3</option>
+      <option value="75">4</option>
       <option value="100">5</option>
     </select>
     </div>
