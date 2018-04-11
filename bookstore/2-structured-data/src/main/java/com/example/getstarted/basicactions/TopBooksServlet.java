@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 // @WebServlet(name = "top", urlPatterns = {"", "/top"}, loadOnStartup = 1)
 public class TopBooksServlet extends HttpServlet {
 
-  @Override
+  /*@Override
   public void init(){
     BookDao dao = null;
 
@@ -39,7 +39,7 @@ public class TopBooksServlet extends HttpServlet {
             "Invalid storage type. Check if bookshelf.storageType property is set.");
     }
     this.getServletContext().setAttribute("dao", dao);
-  }
+}**/
 
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,

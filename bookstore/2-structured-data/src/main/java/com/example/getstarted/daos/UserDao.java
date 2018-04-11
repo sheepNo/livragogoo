@@ -7,7 +7,5 @@ public interface UserDao {
 
     boolean login(User user);
 
-    //void logout(User user);
-
     User readUser(Long userId);
 }
