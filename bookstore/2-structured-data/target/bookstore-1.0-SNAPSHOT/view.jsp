@@ -36,10 +36,18 @@ Copyright 2016 Google Inc.
       </small>
   </p>
   <p>
+      <c:if test="${not empty currentSessionUser}">
       <a href="/rate?id=${book.id}" class="btn btn-warning btn-sm">
         <i class="fa fa-star"></i>
           Rate
       </a>
+        </c:if>
+        <c:if test="${empty currentSessionUser}">
+        <button class="btn btn-light btn-sm">
+          <i class="fa fa-star"></i>
+            Rate
+        </button>
+          </c:if>
       <c:set var="doubleRating" value="${book.numberVotes}" />
       <fmt:parseNumber var="intRating" integerOnly="true" type="number" value="${doubleRating}" />
         <%-- <span class="badge badge-primary badge-pill">${intRating} votes</span> --%>
@@ -121,10 +129,18 @@ Copyright 2016 Google Inc.
               <span class="badge badge-primary badge-pill">${numberComments}</span>
           </div>
           <div>
-            <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
-              <i class="fa fa-comment"></i>
-              Add a comment
-            </a>
+              <c:if test="${not empty currentSessionUser}">
+                <a href="/comments?id=${book.id}" class="btn btn-info btn-sm">
+                  <i class="fa fa-comment"></i>
+                  Add a comment
+                </a>
+            </c:if>
+            <c:if test="${empty currentSessionUser}">
+                <button class="btn btn-light btn-sm">
+                  <i class="fa fa-comment"></i>
+                  Add a comment
+              </button>
+            </c:if>
           </div>
       </div>
       <c:forEach items="${listComments}" var="comment">

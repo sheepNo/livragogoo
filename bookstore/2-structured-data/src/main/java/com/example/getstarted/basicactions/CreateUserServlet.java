@@ -55,7 +55,8 @@ public class CreateUserServlet extends HttpServlet {
       Long id = dao.createUser(user);
       resp.sendRedirect("/");
     } catch (Exception e) {
-      throw new ServletException("Error creating user", e);
+        resp.sendRedirect("/register");
+      // throw new ServletException("Error creating user", e);
     }
   }
   // [END formpost]

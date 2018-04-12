@@ -66,11 +66,12 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("currentSessionUser", user);
                 resp.sendRedirect("/mylist?userid=" + user.getId().toString());
             } else {
-                // resp.sendRedirect("/login");
-                throw new ServletException("Wrong password.");
+                resp.sendRedirect("/login");
+                // throw new ServletException("Wrong password.");
             }
         } catch (Exception e) {
-            throw new ServletException("Error to login", e);
+            resp.sendRedirect("/login");
+            // throw new ServletException("Error to login", e);
         }
     }
 }

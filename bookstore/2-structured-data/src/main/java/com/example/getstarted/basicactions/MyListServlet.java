@@ -39,8 +39,10 @@ public class MyListServlet extends HttpServlet {
     List<Book> myBooks = new LinkedList<Book> ();
     for (String id: myBooksID){
         if (!id.equals("")){
+            try {
             Book book = dao.readBook(Long.decode(id));
             myBooks.add(book);
+            } catch (Exception e) {}
         }
     }
     try {
