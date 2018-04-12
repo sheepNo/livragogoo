@@ -28,34 +28,12 @@ import javax.servlet.http.HttpSession;
 public class MyListServlet extends HttpServlet {
 
   @Override
-  public void init(){
-    BookDao dao = null;
-
-    // Creates the DAO based on the Context Parameters
-    String storageType = this.getServletContext().getInitParameter("bookshelf.storageType");
-    switch (storageType) {
-      case "datastore":
-        dao = new DatastoreDao();
-        break;
-      default:
-        throw new IllegalStateException(
-            "Invalid storage type. Check if bookshelf.storageType property is set.");
-    }
-    this.getServletContext().setAttribute("dao", dao);
-  }
-
-  @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,
       ServletException {
-    Long userid = Long.decode(req.getParameter("userid"));
+    Long userId = Long.decode(req.getParameter("userid"));
     BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
-    // String startCursor = req.getParameter("cursor");
-    // TODO better
-    // HttpSession session = req.getSession(true);
-    // User user = (User)session.getAttribute("currentSessionUser");
-    // TODO or this way ?
     UserDao userdao = (UserDao) this.getServletContext().getAttribute("dao");
-    User user = userdao.readUser(userid);
+    User user = userdao.readUser(userId);
 
     String[] myBooksID = user.getMyList().split("%µ");
     List<Book> myBooks = new LinkedList<Book> ();
@@ -65,22 +43,12 @@ public class MyListServlet extends HttpServlet {
             myBooks.add(book);
         }
     }
-    // String endCursor = null;
     try {
-      // Result<Book> result = dao.listBooks(startCursor);
-      // books = result.result;
       Collections.sort(myBooks, (a,b) -> a.getTitle().compareTo(b.getTitle()));
-      // endCursor = result.cursor;
     } catch (Exception e) {
       throw new ServletException("Error listing books", e);
     }
     req.getSession().getServletContext().setAttribute("books", myBooks);
-    StringBuilder bookNames = new StringBuilder();
-    for (Book book : myBooks) {
-      bookNames.append(book.getTitle() + " ");
-    }
-    // req.setAttribute("cursor", endCursor);
-    // req.setAttribute("user", user);
     req.setAttribute("page", "userlist");
     req.getRequestDispatcher("/base.jsp").forward(req, resp);
   }

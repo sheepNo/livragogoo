@@ -26,23 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 // @WebServlet(name = "top", urlPatterns = {"", "/top"}, loadOnStartup = 1)
 public class TopBooksServlet extends HttpServlet {
 
-  /*@Override
-  public void init(){
-    BookDao dao = null;
-
-    // Creates the DAO based on the Context Parameters
-    String storageType = this.getServletContext().getInitParameter("bookshelf.storageType");
-    switch (storageType) {
-      case "datastore":
-        dao = new DatastoreDao();
-        break;
-      default:
-        throw new IllegalStateException(
-            "Invalid storage type. Check if bookshelf.storageType property is set.");
-    }
-    this.getServletContext().setAttribute("dao", dao);
-}**/
-
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,
       ServletException {

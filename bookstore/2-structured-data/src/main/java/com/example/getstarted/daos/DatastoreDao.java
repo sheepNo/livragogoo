@@ -231,7 +231,7 @@ public class DatastoreDao implements BookDao, UserDao {
   @Override
   public void addBookToList(User user) {
     Key key = keyFactory.newKey(user.getId());  // From a book, create a Key
-    Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
+    Entity entity = Entity.newBuilder(key)     
         .set(User.USERNAME, user.getUserName())
         .set(User.PASSWORD, user.getPassword())
         .set(User.MYLIST, user.getMyList())

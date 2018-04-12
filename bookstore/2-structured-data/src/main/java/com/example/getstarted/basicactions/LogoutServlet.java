@@ -26,7 +26,6 @@ public class LogoutServlet extends HttpServlet {
             HttpSession session = req.getSession();
             session.invalidate();
             resp.sendRedirect("/books");
-            // req.getRequestDispatcher("/logout.jsp").forward(req, resp);
         } catch (Exception e) {
             throw new ServletException("Error to logout", e);
         }

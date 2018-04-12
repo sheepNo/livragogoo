@@ -4,6 +4,7 @@ import com.example.getstarted.daos.UserDao;
 import com.example.getstarted.objects.User;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -36,17 +37,22 @@ public class CreateUserServlet extends HttpServlet {
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
       IOException {
     UserDao dao = (UserDao) this.getServletContext().getAttribute("dao");
+    String userName = req.getParameter("username");
+    List<User> listUsers = dao.listUsers();
+    for (User userStored: listUsers) {
+        if (userStored.getUserName().equals(userName)) {
+            throw new ServletException("Username already taken.");
+        }
+    }
 // [START bookBuilder]
     User user = new User.Builder()
-        .userName(req.getParameter("username"))
+        .userName(userName)
         .password(req.getParameter("password"))
-        // .myList("5657582312095744")
         // .valid(Long.decode(req.getParameter("valid")))
         .build();
 // [END bookBuilder]
     try {
       Long id = dao.createUser(user);
-      // resp.sendRedirect("/user?id=" + id.toString());   // read what we just wrote
       resp.sendRedirect("/");
     } catch (Exception e) {
       throw new ServletException("Error creating user", e);

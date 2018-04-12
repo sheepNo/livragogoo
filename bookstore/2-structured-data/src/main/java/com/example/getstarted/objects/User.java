@@ -97,4 +97,8 @@ public class User {
     // public void setValid(Long valid) {
     //     this.valid = valid;
     // }
+
+    /*public String toString() {
+        return this.getId().toString() + ": " + this.getUserName();
+    }*/
 }

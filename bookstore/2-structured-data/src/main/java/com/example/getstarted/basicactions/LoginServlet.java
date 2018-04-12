@@ -28,8 +28,6 @@ public class LoginServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {
         UserDao dao = (UserDao) this.getServletContext().getAttribute("dao");
         try {
-            //User user = dao.readUser(Long.decode(req.getParameter("id")));
-            //req.setAttribute("user", user);
             req.setAttribute("action", "Login");
             req.setAttribute("destination", "login");
             req.setAttribute("page", "loginform");
@@ -44,34 +42,30 @@ public class LoginServlet extends HttpServlet {
     IOException {
         UserDao dao = (UserDao) this.getServletContext().getAttribute("dao");
         try {
-            String userId = null;
+            User userToLogin = null;
             String userName = req.getParameter("username");
             List<User> listUsers = dao.listUsers();
             for (User userStored: listUsers) {
                 if (userStored.getUserName().equals(userName)) {
-                    userId = userStored.getId().toString();
+                    userToLogin = userStored;
                 }
             }
-            if (userId == null) {
-                /*for (User userStored: listUsers) {
-                    dao.deleteUser(userStored.getId());
-                }*/
-                throw new ServletException("You are not registered");
+            if (userToLogin == null) {
+                throw new ServletException("You are not registered.");
             }
             User user = new User.Builder()
-            .id(Long.decode(userId))
+            .id(userToLogin.getId())
             .userName(userName)
             .password(req.getParameter("password"))
-            .myList("")
+            .myList(userToLogin.getMyList())
             // .valid(Long.decode(req.getParameter("valid")))
             .build();
             if (dao.login(user)) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("currentSessionUser", user);
-                // resp.sendRedirect("/user?id=" + req.getParameter("id"));
                 resp.sendRedirect("/mylist?userid=" + user.getId().toString());
             } else {
-                resp.sendRedirect("/invalidLogin");
+                throw new ServletException("Wrong password.");
             }
         } catch (Exception e) {
             throw new ServletException("Error to login", e);

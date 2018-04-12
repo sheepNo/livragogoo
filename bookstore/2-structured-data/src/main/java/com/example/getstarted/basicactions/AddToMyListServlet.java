@@ -29,11 +29,10 @@ public class AddToMyListServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
         String id = req.getParameter("id");
-        // Long userid = Long.decode(req.getParameter("userid"));
         HttpSession session = req.getSession(true);
-        User user = (User)session.getAttribute("currentSessionUser");
+        User user = (User) session.getAttribute("currentSessionUser");
         UserDao dao = (UserDao) this.getServletContext().getAttribute("dao");
-        
+
         try {
             user.setMyList(user.getMyList() + "%µ" + id);
             dao.addBookToList(user);

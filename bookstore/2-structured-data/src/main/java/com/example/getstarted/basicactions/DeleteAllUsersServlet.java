@@ -37,7 +37,6 @@ public class DeleteAllUsersServlet extends HttpServlet {
             List<User> listUsers = dao.listUsers();
             for (User user: listUsers) {
                 dao.deleteUser(user.getId());
-
             }
 
             resp.sendRedirect("/books");
