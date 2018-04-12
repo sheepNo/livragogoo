@@ -19,8 +19,9 @@ ajouter à son panier / liste de souhait DONE
 supprimer un livre de sa liste
 
 ajouter un bouton pour ajouter à sa liste dans view
-
+voir qui a ajouté un livre
 faire en sorte de pouvoir retirer un vote !
+mettre un nombre de pouces plutôt ?
 
 register DONE
 login DONE
