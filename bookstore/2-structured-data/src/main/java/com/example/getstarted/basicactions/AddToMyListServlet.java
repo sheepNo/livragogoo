@@ -35,7 +35,7 @@ public class AddToMyListServlet extends HttpServlet {
 
         try {
             user.setMyList(user.getMyList() + "%µ" + id);
-            dao.addBookToList(user);
+            dao.updateUser(user);
             resp.sendRedirect("/books");
         } catch (Exception e) {
             throw new ServletException("Error adding book to user list", e);

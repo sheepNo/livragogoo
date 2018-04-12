@@ -11,9 +11,11 @@ public interface UserDao {
 
     User readUser(Long userId);
 
-    void addBookToList(User user);
+    void updateUser(User user);
 
     List<User> listUsers();
 
     void deleteUser(Long userId);
+
+    boolean alreadyRated(Long userId, Long bookId);
 }

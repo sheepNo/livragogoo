@@ -13,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import java.util.Arrays;
 
 // [START example]
 @SuppressWarnings("serial")
@@ -40,7 +43,16 @@ public class RateBookServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
         BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
+        HttpSession session = req.getSession(true);
+        User user = (User) session.getAttribute("currentSessionUser");
+        if (user == null) {
+            throw new ServletException("You can't rate if you are not login.");
+        }
+        UserDao userDao = (UserDao) this.getServletContext().getAttribute("dao");
         try {
+            if (userDao.alreadyRated(user.getId(), Long.decode(req.getParameter("id")))){
+                throw new ServletException("You already rated this book.");
+            }
             Book book = new Book.Builder()
             .author(req.getParameter("author"))
             .description(req.getParameter("description"))
@@ -54,6 +66,14 @@ public class RateBookServlet extends HttpServlet {
             .imageUrl(req.getParameter("imageUrl"))
             .build();
             dao.rateBook(book);
+            User newUser = new User.Builder()
+                .id(user.getId())
+                .userName(user.getUserName())
+                .password(user.getPassword())
+                .myList(user.getMyList())
+                .rated(req.getParameter("id") + ":" + req.getParameter("bufRating") + "%µ" + user.getRated())
+                .build();
+            userDao.updateUser(newUser);
             resp.sendRedirect("/read?id=" + req.getParameter("id"));
         } catch (Exception e) {
             throw new ServletException("Error rating book", e);

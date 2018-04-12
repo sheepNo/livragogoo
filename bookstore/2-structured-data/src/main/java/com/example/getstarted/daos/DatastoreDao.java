@@ -184,6 +184,7 @@ public class DatastoreDao implements BookDao, UserDao {
         .password(entity.getString(User.PASSWORD))
         // TODO un/comment if not compatible with old profiles
         .myList(entity.getString(User.MYLIST))
+        .rated(entity.getString(User.RATED))
         // .valid(entity.getLong(User.VALID))
         .build();
   }
@@ -201,6 +202,7 @@ public class DatastoreDao implements BookDao, UserDao {
         .set(User.USERNAME, user.getUserName())
         .set(User.PASSWORD, user.getPassword())
         .set(User.MYLIST, "")
+        .set(User.RATED, "")
         // .set(User.VALID, user.getValid())
         .build();
     Entity userEntity = datastore.add(incUserEntity); // Save the Entity
@@ -218,12 +220,13 @@ public class DatastoreDao implements BookDao, UserDao {
   }
 
   @Override
-  public void addBookToList(User user) {
+  public void updateUser(User user) {
     Key key = keyFactory.newKey(user.getId());  // From a book, create a Key
     Entity entity = Entity.newBuilder(key)
         .set(User.USERNAME, user.getUserName())
         .set(User.PASSWORD, user.getPassword())
         .set(User.MYLIST, user.getMyList())
+        .set(User.RATED, user.getRated())
         // .set(User.VALID, user.getValid())
         .build();
     datastore.update(entity);                   // Update the Entity
@@ -252,6 +255,22 @@ public class DatastoreDao implements BookDao, UserDao {
     public void deleteUser(Long userId) {
       Key key = keyFactory.newKey(userId); // Create the Key
       datastore.delete(key); // Delete the Entity
+    }
+
+    @Override
+    public boolean alreadyRated(Long userId, Long bookId){
+        Entity userEntity = datastore.get(keyFactory.newKey(userId));
+        User user = entityToUser(userEntity);
+        if (!user.getRated().equals("")){
+            String[] rates = user.getRated().split("%µ");
+            for (String rate: rates) {
+                String[] id_rate = rate.split(":");
+                if (id_rate[0].equals(bookId.toString())){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 // [END example]

@@ -58,6 +58,7 @@ public class LoginServlet extends HttpServlet {
             .userName(userName)
             .password(req.getParameter("password"))
             .myList(userToLogin.getMyList())
+            .rated(userToLogin.getRated())
             // .valid(Long.decode(req.getParameter("valid")))
             .build();
             if (dao.login(user)) {

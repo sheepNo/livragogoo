@@ -5,12 +5,14 @@ public class User {
     private String userName;
     private String password;
     private String myList;
+    private String rated;
     // public Long valid;
 
     public static final String ID = "id";
     public static final String USERNAME = "userName";
     public static final String PASSWORD = "password";
     public static final String MYLIST = "myList";
+    public static final String RATED = "rated";
     // public static final String VALID = "valid";
 
     private User(Builder builder){
@@ -18,6 +20,7 @@ public class User {
         this.userName = builder.userName;
         this.password = builder.password;
         this.myList = builder.myList;
+        this.rated = builder.rated;
         // this.valid = builder.valid;
     }
 
@@ -26,6 +29,7 @@ public class User {
         private String userName;
         private String password;
         private String myList;
+        private String rated;
         // public Long valid;
 
         public Builder id(Long id) {
@@ -45,6 +49,11 @@ public class User {
 
         public Builder myList(String myList) {
             this.myList = myList;
+            return this;
+        }
+
+        public Builder rated(String rated) {
+            this.rated = rated;
             return this;
         }
 
@@ -89,7 +98,15 @@ public class User {
     public void setMyList(String myList) {
         this.myList = myList;
     }
-    //
+
+    public String getRated() {
+        return rated;
+    }
+
+    public void setRated(String rated) {
+        this.rated = rated;
+    }
+
     // public Long getValid() {
     //     return valid;
     // }
@@ -99,6 +116,6 @@ public class User {
     // }
 
     /*public String toString() {
-        return this.getId().toString() + ": " + this.getUserName();
+        return id.toString() + ": " + userName;
     }*/
 }
