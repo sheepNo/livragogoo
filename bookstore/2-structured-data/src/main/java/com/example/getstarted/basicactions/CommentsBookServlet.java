@@ -40,6 +40,12 @@ public class CommentsBookServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
     IOException {
         BookDao dao = (BookDao) this.getServletContext().getAttribute("dao");
+        HttpSession session = req.getSession(true);
+        User user = (User) session.getAttribute("currentSessionUser");
+        if (user == null) {
+            throw new ServletException("You can't comment if you are not login.");
+        }
+        UserDao userDao = (UserDao) this.getServletContext().getAttribute("dao");
         try {
             Book book = new Book.Builder()
             .author(req.getParameter("author"))
@@ -49,7 +55,6 @@ public class CommentsBookServlet extends HttpServlet {
             .imageUrl(req.getParameter("imageUrl"))
             .id(Long.decode(req.getParameter("id")))
             .rating(Double.parseDouble(req.getParameter("rating")))
-            //.bufRating(Double.parseDouble(req.getParameter("bufRating")))
             .numberVotes(Double.parseDouble(req.getParameter("numberVotes")))
             .comments(req.getParameter("comments"))
             .bufComments(req.getParameter("bufComments"))
