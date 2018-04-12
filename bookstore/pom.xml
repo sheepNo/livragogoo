@@ -32,6 +32,8 @@ Copyright 2016 Google Inc.
 
   <properties>
     <jetty.maven.plugin>9.4.3.v20170317</jetty.maven.plugin>
+    <appengine.maven.plugin>1.3.2</appengine.maven.plugin>
+    
   </properties>
 
   <profiles>
@@ -96,6 +98,12 @@ Copyright 2016 Google Inc.
 
   <build>
     <plugins>
+        <plugin>
+          <groupId>com.google.cloud.tools</groupId>
+          <artifactId>appengine-maven-plugin</artifactId>
+          <version>${appengine.maven.plugin}</version>
+        </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>

@@ -15,10 +15,10 @@ com/example/getstarted/basicactions/DeleteBookServlet.class
 com/example/getstarted/objects/User$Builder.class
 com/example/getstarted/objects/Result.class
 com/example/getstarted/objects/User$1.class
-com/example/getstarted/basicactions/LoginServlet.class
 com/example/getstarted/daos/UserDao.class
-com/example/getstarted/basicactions/DeleteAllUsersServlet.class
+com/example/getstarted/basicactions/LoginServlet.class
 com/example/getstarted/basicactions/MyListServlet.class
+com/example/getstarted/basicactions/DeleteAllUsersServlet.class
 com/example/getstarted/basicactions/HealthServlet.class
 com/example/getstarted/basicactions/ReadBookServlet.class
 com/example/getstarted/basicactions/ListBookServlet.class
