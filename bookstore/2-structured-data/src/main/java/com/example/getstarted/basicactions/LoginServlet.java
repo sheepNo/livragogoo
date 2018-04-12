@@ -62,13 +62,14 @@ public class LoginServlet extends HttpServlet {
             .id(Long.decode(userId))
             .userName(userName)
             .password(req.getParameter("password"))
+            .myList("")
             // .valid(Long.decode(req.getParameter("valid")))
             .build();
             if (dao.login(user)) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("currentSessionUser", user);
                 // resp.sendRedirect("/user?id=" + req.getParameter("id"));
-                resp.sendRedirect("/");
+                resp.sendRedirect("/mylist?userid=" + user.getId().toString());
             } else {
                 resp.sendRedirect("/invalidLogin");
             }

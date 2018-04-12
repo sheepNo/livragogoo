@@ -25,7 +25,7 @@
 
     <button type="submit" class="btn btn-success">
         <i class="fas fa-check"></i>
-        Save
+        Register
     </button>
 
     <a href="/" class="btn btn-danger">

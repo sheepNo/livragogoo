@@ -25,7 +25,7 @@
 
     <button type="submit" class="btn btn-success">
         <i class="fas fa-check"></i>
-        Save
+        Log in
     </button>
 
     <a href="/" class="btn btn-danger">

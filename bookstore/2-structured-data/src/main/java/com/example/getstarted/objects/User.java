@@ -82,11 +82,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getmyList() {
+    public String getMyList() {
         return myList;
     }
 
-    public void setmyList(String myList) {
+    public void setMyList(String myList) {
         this.myList = myList;
     }
     //

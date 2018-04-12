@@ -11,6 +11,8 @@ public interface UserDao {
 
     User readUser(Long userId);
 
+    void addBookToList(User user);
+
     List<User> listUsers();
 
     void deleteUser(Long userId);

@@ -4,7 +4,7 @@
 <div class="container">
     <div style="display: flex; justify-content: flex-start;">
     <div>
-        <h3>Top books</h3>
+        <h3>My list</h3>
     </div>
     </div>
   <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly">

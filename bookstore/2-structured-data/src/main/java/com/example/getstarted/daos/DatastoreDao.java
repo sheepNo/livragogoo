@@ -192,6 +192,8 @@ public class DatastoreDao implements BookDao, UserDao {
         .id(entity.getKey().getId())
         .userName(entity.getString(User.USERNAME))
         .password(entity.getString(User.PASSWORD))
+        // TODO un/comment if not compatible with old profiles
+        .myList(entity.getString(User.MYLIST))
         // .valid(entity.getLong(User.VALID))
         .build();
   }
@@ -208,6 +210,8 @@ public class DatastoreDao implements BookDao, UserDao {
     FullEntity<IncompleteKey> incUserEntity = Entity.newBuilder(key) // Create the Entity
         .set(User.USERNAME, user.getUserName())
         .set(User.PASSWORD, user.getPassword())
+        // TODO maybe not needed
+        .set(User.MYLIST, "")
         // .set(User.VALID, user.getValid())
         .build();
     Entity userEntity = datastore.add(incUserEntity); // Save the Entity
@@ -222,6 +226,18 @@ public class DatastoreDao implements BookDao, UserDao {
     } else {
         return false;
     }
+  }
+
+  @Override
+  public void addBookToList(User user) {
+    Key key = keyFactory.newKey(user.getId());  // From a book, create a Key
+    Entity entity = Entity.newBuilder(key)         // Convert Book to an Entity
+        .set(User.USERNAME, user.getUserName())
+        .set(User.PASSWORD, user.getPassword())
+        .set(User.MYLIST, user.getMyList())
+        // .set(User.VALID, user.getValid())
+        .build();
+    datastore.update(entity);                   // Update the Entity
   }
 
   public List<User> entitiesToUsers(QueryResults<Entity> resultList) {

@@ -73,6 +73,7 @@ public class ListBookServlet extends HttpServlet {
     for (Book book : books) {
       bookNames.append(book.getTitle() + " ");
     }
+    // req.setAttribute("user", user);
     req.setAttribute("cursor", endCursor);
     req.setAttribute("page", "list");
     req.getRequestDispatcher("/base.jsp").forward(req, resp);

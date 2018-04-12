@@ -40,6 +40,7 @@ public class CreateUserServlet extends HttpServlet {
     User user = new User.Builder()
         .userName(req.getParameter("username"))
         .password(req.getParameter("password"))
+        // .myList("5657582312095744")
         // .valid(Long.decode(req.getParameter("valid")))
         .build();
 // [END bookBuilder]

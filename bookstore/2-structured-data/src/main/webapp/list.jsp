@@ -38,21 +38,6 @@ Copyright 2016 Google Inc.
       <div class="card" style="width: 25%; max-width: 240px; min-width: 170px; margin:1em;">
               <a href="/read?id=${book.id}">
             <img class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
-
-                <%-- <a href="/read?id=${book.id}"> --%>
-                <%-- <div class="card-img-overlay">
-                    <div style="display: flex-direction: row; margin-top: 0.7em; justify-content: flex-end; align-content: flex-end;" class="btn-group" role="group" aria-label="Basic example">
-                        <a href="/update?id=${book.id}" class="btn btn-light" role="button">
-                        <i class="fas fa-plus"></i>
-                        </a>
-                        <a href="/update?id=${book.id}" class="btn btn-light" role="button">
-                        <i class="fas fa-edit"></i>
-                        </a>
-                        <a href="/delete?id=${book.id}" class="btn btn-light">
-                        <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </div>
-                </div> --%>
             </a>
 
         <div style="display: flex; justify-content: space-between; flex-direction: column;" class="card-body">
@@ -65,7 +50,7 @@ Copyright 2016 Google Inc.
             </div> --%>
             <%-- <div style="display: flex-direction: row; margin-top: 0.1em;" > --%>
                 <div style="display: flex-direction: row; margin-top: 0.7em; justify-content: flex-end;" class="btn-group" role="group" aria-label="Basic example">
-                    <a href="/update?id=${book.id}" class="btn btn-light" role="button">
+                    <a href="/addlist?id=${book.id}&userid=${currentSessionUser.id}" class="btn btn-light" role="button">
                     <i class="fas fa-plus"></i>
                     </a>
                     <a href="/update?id=${book.id}" class="btn btn-light" role="button">
