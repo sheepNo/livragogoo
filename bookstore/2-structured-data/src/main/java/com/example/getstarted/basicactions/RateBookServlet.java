@@ -51,7 +51,6 @@ public class RateBookServlet extends HttpServlet {
             .bufRating(Double.parseDouble(req.getParameter("bufRating")))
             .numberVotes(Double.parseDouble(req.getParameter("numberVotes")))
             .comments(req.getParameter("comments"))
-            //.bufComments(req.getParameter("bufComments"))
             .imageUrl(req.getParameter("imageUrl"))
             .build();
             dao.rateBook(book);

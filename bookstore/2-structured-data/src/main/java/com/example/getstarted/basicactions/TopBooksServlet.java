@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 @MultipartConfig
 @WebServlet(name = "top", value = "/top")
-// @WebServlet(name = "top", urlPatterns = {"", "/top"}, loadOnStartup = 1)
 public class TopBooksServlet extends HttpServlet {
 
   @Override
