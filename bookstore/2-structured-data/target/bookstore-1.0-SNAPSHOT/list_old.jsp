@@ -46,10 +46,7 @@ Copyright 2016 Google Inc.
                 <h5>${fn:escapeXml(not empty book.title?book.title:'Unknown')}</h5>
                 <small>by ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</small>
             </div>
-            <%-- <div class="progress">
-                <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
-            </div> --%>
-            <%-- <div style="display: flex-direction: row; margin-top: 0.1em;" > --%>
+
                 <div style="display: flex-direction: row; margin-top: 0.7em; justify-content: flex-end;" class="btn-group" role="group" aria-label="Basic example">
                     <a href="/update?id=${book.id}" class="btn btn-light" role="button">
                     <i class="fas fa-plus"></i>
@@ -61,18 +58,11 @@ Copyright 2016 Google Inc.
                     <i class="fas fa-trash-alt"></i>
                     </a>
                 </div>
-            <%-- </div> --%>
         </div>
       </div>
 
     </c:forEach>
-    <%-- <c:if test="${not empty cursor}">
-    <nav>
-    <ul class="pager">
-        <li><a href="?cursor=${fn:escapeXml(cursor)}">More</a></li>
-    </ul>
-    </nav>
-    </c:if> --%>
+
     </c:otherwise>
     </c:choose>
 </div>

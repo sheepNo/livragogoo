@@ -8,8 +8,6 @@
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
 
-    <!--This is super important. -->
-    <%-- <input type="hidden" name="oldRating" id="oldRating" value="${book.rating}" /> --%>
     <input type="hidden" name="id" value="${book.id}" />
     <input type="hidden" type="text" name="title" id="title" value="${fn:escapeXml(book.title)}"/>
     <input type="hidden"  type="text" name="author" id="author" value="${fn:escapeXml(book.author)}"/>

@@ -23,8 +23,6 @@ Copyright 2016 Google Inc.
 
   <form method="POST" action="${destination}" enctype="multipart/form-data">
 
-    <!--This is super important. -->
-    <%-- <input type="hidden" name="oldRating" id="oldRating" value="${book.rating}" /> --%>
     <input type="hidden" name="id" value="${book.id}" />
     <input type="hidden" type="text" name="title" id="title" value="${fn:escapeXml(book.title)}"/>
     <input type="hidden"  type="text" name="author" id="author" value="${fn:escapeXml(book.author)}"/>
@@ -35,17 +33,10 @@ Copyright 2016 Google Inc.
     <input type="hidden" type="text" name="comments" id="comments" value="${fn:escapeXml(book.comments)}" />
     <input type="hidden" type="text" name="imageUrl" id="imageUrl" value="${fn:escapeXml(book.imageUrl)}" />
 
-    <%-- <input type="hidden" type="text" name="bufComments" id="bufComments" value="${fn:escapeXml(book.bufComments)}" /> --%>
-
-    <%-- <div class="form-group">
-      <label for="bufRating">Rating</label>
-      <input type="text" name="bufRating" id="bufRating" placeholder="Enter your rating here" class="form-control" />
-    </div> --%>
 
     <div style="display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap;">
     <div>
     <select style="max-width:300px" name="bufRating" id="bufRating" class="custom-select custom-select-lg">
-      <%-- <option value="0">0</option> --%>
       <option value="0">1</option>
       <option value="25">2</option>
       <option value="50" selected>3</option>

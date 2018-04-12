@@ -50,49 +50,11 @@ Copyright 2016 Google Inc.
           </c:if>
       <c:set var="doubleRating" value="${book.numberVotes}" />
       <fmt:parseNumber var="intRating" integerOnly="true" type="number" value="${doubleRating}" />
-        <%-- <span class="badge badge-primary badge-pill">${intRating} votes</span> --%>
       (${intRating} votes)
   </p>
     <div style="max-width: 300px;" class="progress">
           <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
-
-
-<%--
-      <div class="card" style="width: 100%;">
-        <div class="card-header">
-          Featured
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-              <h3 class="book-title">
-                ${fn:escapeXml(not empty book.title?book.title:'Unknown')}
-                <small>${fn:escapeXml(book.publishedDate)}</small>
-            </h3>
-        </li>
-          <li class="list-group-item">
-                    <h4 class="book-author">By ${fn:escapeXml(not empty book.author?book.author:'Unknown')}</h4>
-        </li>
-        <li class="list-group-item">
-            <p><small class="book-added-by">
-            (added by ${fn:escapeXml(not empty book.createdBy?book.createdBy:'Anonymous')})
-        </small>
-    </p>
-</li>
-          <li class="list-group-item">
-              <p>
-              <a href="/rate?id=${book.id}" class="btn btn-warning btn-sm">
-                <i class="fa fa-star"></i>
-                  Rate
-              </a>
-              (${book.numberVotes} votes)
-          </p>
-              <div style="max-width: 300px;" class="progress">
-                    <div style="width:${fn:escapeXml(book.rating)}%" class="progress-bar bg-info" role="progressbar" aria-valuenow="${fn:escapeXml(book.rating)}" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-          </li>
-        </ul>
-      </div> --%>
 
     </div>
 </div>

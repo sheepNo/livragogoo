@@ -18,11 +18,6 @@
       <input type="text" name="password" id="password" placeholder="password" class="form-control" />
     </div>
 
-    <!-- <div class="form-group">
-      <label for="valid"></label>
-      <textarea style="display:none;" name="valid" id="valid" class="form-control" placeholder="valid">0</textarea>
-    </div> -->
-
     <button type="submit" class="btn btn-success">
         <i class="fas fa-check"></i>
         Register

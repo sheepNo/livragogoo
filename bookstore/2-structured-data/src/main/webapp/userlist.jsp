@@ -11,7 +11,7 @@
 
   <c:choose>
   <c:when test="${empty books}">
-      <i style="color: #dcdcdc; font-size: 20em;" class="fas fa-band-aid"></i>
+      <i style="color: #dcdcdc; font-size: 20em;" class="fas fa-book"></i>
   </c:when>
   <c:otherwise>
 
@@ -20,9 +20,7 @@
 
     <a href="/read?id=${book.id}" style="padding: 2em;" class="list-group-item list-group-item-action flex-column align-items-start">
     <div style="height: 160px; width: 100%; display: flex; flex-direction: flex-row;">
-        <%-- <div style="height: auto; margin-right: 2em;"> --%>
             <img style="margin-right: 1em; width: 100px;" class="card-img-top" src="${fn:escapeXml(not empty book.imageUrl?book.imageUrl:'http://placekitten.com/g/128/192')}" alt="Card image cap">
-        <%-- </div> --%>
         <div style="width: 100%;">
             <div class="d-flex w-100 justify-content-between">
                 <h5>${fn:escapeXml(not empty book.title?book.title:'Unknown')}</h5>
@@ -42,13 +40,6 @@
     </c:forEach>
     </div>
 
-    <%-- <c:if test="${not empty cursor}">
-    <nav>
-    <ul class="pager">
-        <li><a href="?cursor=${fn:escapeXml(cursor)}">More</a></li>
-    </ul>
-    </nav>
-    </c:if> --%>
     </c:otherwise>
     </c:choose>
 </div>
